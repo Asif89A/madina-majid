@@ -4,7 +4,7 @@
 Welcome to the official **Madina Masjid** website. This site provides prayer timings, announcements, events, and donation options for the Masjid.
 
 ## 🌐 Live Website  
-🔗 [View the website](https://your-username.github.io/madina-masjid/)  
+🔗 [View the website](https://asif89a.github.io/madina-majid/)  
 
 ---
 
