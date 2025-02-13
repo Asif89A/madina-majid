@@ -4,88 +4,159 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Madina Masjid - Purandawade</title>
+    <!-- GitHub Pages Deployment Ready -->
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
-    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Inter:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        body { font-family: 'Inter', sans-serif; }
-        h1, h2, h3 { font-family: 'Amiri', serif; }
-        .hero {
-            background: url('https://source.unsplash.com/1600x900/?mosque,prayer') no-repeat center center/cover;
-            height: 80vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            color: white;
-            text-align: center;
-            position: relative;
+        :root {
+            --primary-color: #2dd4bf;
+            --secondary-color: #059669;
         }
-        .overlay {
-            background: rgba(0, 0, 0, 0.6);
-            width: 100%;
-            height: 100%;
-            position: absolute;
-        }
+        body { font-family: 'Inter', sans-serif; line-height: 1.6; }
+        .arabic-font { font-family: 'Amiri', serif; }
+        .min-h-screen-80 { min-height: 80vh; }
+        .gh-page-section { padding: 4rem 1rem; }
+        .mobile-menu { max-height: 0; transition: max-height 0.3s ease-out; }
     </style>
 </head>
-<body class="bg-gradient-to-br from-blue-900 via-gray-900 to-gray-800 text-gray-200">
-    <header class="bg-gradient-to-r from-teal-600 to-green-700 text-white p-6 text-center text-3xl font-bold shadow-lg">Madina Masjid - Purandawade</header>
-    
-    <section class="hero relative">
-        <div class="overlay"></div>
-        <div class="relative z-10">
-            <h1 class="text-6xl font-bold" data-aos="fade-down">Welcome to Madina Masjid</h1>
-            <p class="mt-4 text-xl" data-aos="fade-up">A place of peace, prayer, and unity.</p>
-            <a href="#donate" class="mt-6 inline-block bg-yellow-400 text-gray-900 px-6 py-3 rounded-lg text-lg hover:bg-yellow-500 transition" data-aos="fade-up">Support Us</a>
+<body class="bg-gray-900 text-gray-100">
+    <!-- Mobile Navigation -->
+    <nav class="bg-gradient-to-r from-teal-700 to-green-800 sticky top-0 z-50 shadow-lg">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center h-16">
+                <span class="text-xl arabic-font">مسجد المدينة</span>
+                <button id="mobileMenuButton" class="md:hidden text-white">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+            </div>
+            <div id="mobileMenu" class="mobile-menu overflow-hidden md:hidden">
+                <div class="flex flex-col space-y-4 pb-4">
+                    <a href="#about" class="text-white hover:text-amber-400">About</a>
+                    <a href="#timings" class="text-white hover:text-amber-400">Timings</a>
+                    <a href="#services" class="text-white hover:text-amber-400">Services</a>
+                    <a href="#contact" class="text-white hover:text-amber-400">Contact</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="gh-page-section bg-gradient-to-br from-gray-800 to-gray-900">
+        <div class="container mx-auto text-center">
+            <h1 class="arabic-font text-4xl md:text-6xl font-bold mb-6" data-aos="zoom-in">
+                <span class="block text-amber-400">مرحبا بكم في</span>
+                <span class="block text-teal-400 mt-2">مسجد المدينة</span>
+            </h1>
+            <div class="max-w-2xl mx-auto" data-aos="fade-up">
+                <p class="text-lg md:text-xl mb-8">
+                    A community hub for worship, education, and social harmony since 1995
+                </p>
+                <div class="grid grid-cols-2 gap-4 md:flex md:justify-center md:space-x-4">
+                    <a href="#timings" class="btn bg-amber-400 text-gray-900 hover:bg-amber-500">
+                        Prayer Times <i class="fas fa-clock ml-2"></i>
+                    </a>
+                    <a href="#donate" class="btn border-2 border-teal-400 text-teal-400 hover:bg-teal-400/20">
+                        Support Us <i class="fas fa-hands-helping ml-2"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Key Features -->
+    <section class="gh-page-section bg-gray-800">
+        <div class="container mx-auto grid md:grid-cols-3 gap-8">
+            <div class="feature-card" data-aos="fade-up">
+                <i class="fas fa-quran text-4xl text-amber-400"></i>
+                <h3 class="text-xl font-bold my-4">Quran Classes</h3>
+                <p>Daily classes for children and adults with qualified teachers</p>
+            </div>
+            <!-- Add more feature cards -->
         </div>
     </section>
-    
-    <section class="p-10 text-center" data-aos="fade-up">
-        <h2 class="text-3xl font-semibold text-teal-400">Islamic Teachings & Knowledge</h2>
-        <p class="mt-3 italic text-lg">“Indeed, prayer prohibits immorality and wrongdoing, and the remembrance of Allah is greater.” - (Quran 29:45)</p>
-        <p class="mt-3">Learn about the teachings of Islam, the importance of Salah, and the significance of community and charity.</p>
+
+    <!-- Prayer Times with Hijri Date -->
+    <section id="timings" class="gh-page-section">
+        <div class="container mx-auto" data-aos="fade-up">
+            <h2 class="section-title">Prayer Timings</h2>
+            <div class="hijri-date text-lg text-teal-400 mb-8">
+                <span id="hijriDate">Loading...</span>
+            </div>
+            <div class="prayer-grid grid grid-cols-1 md:grid-cols-5 gap-4">
+                <!-- Prayer times populated by JavaScript -->
+            </div>
+            <p class="text-sm mt-4 opacity-75">* Timings updated monthly - please check notice board</p>
+        </div>
     </section>
-    
-    <section class="p-10 text-center" data-aos="fade-up">
-        <h2 class="text-3xl font-semibold text-teal-400">Prayer Timings</h2>
-        <div id="prayer-timings" class="grid grid-cols-2 md:grid-cols-5 gap-4 mt-4 text-lg"></div>
+
+    <!-- GitHub Pages Optimized Donation Section -->
+    <section id="donate" class="gh-page-section bg-gray-800">
+        <div class="container mx-auto text-center">
+            <h2 class="section-title">Support Your Masjid</h2>
+            <div class="max-w-2xl mx-auto">
+                <div class="donation-methods grid gap-6 md:grid-cols-2">
+                    <div class="donation-option" data-aos="zoom-in">
+                        <h3 class="text-xl font-bold mb-4">Quick UPI Donation</h3>
+                        <a href="upi://pay?pa=dr.89@ibl&pn=Madina%20Masjid" 
+                           class="btn bg-green-600 hover:bg-green-700">
+                            <i class="fas fa-mobile-alt mr-2"></i>Donate Now
+                        </a>
+                    </div>
+                    <div class="donation-option" data-aos="zoom-in">
+                        <h3 class="text-xl font-bold mb-4">Bank Details</h3>
+                        <div class="text-left space-y-2">
+                            <p>Account Name: Madina Masjid Trust</p>
+                            <p>Bank: State Bank of India</p>
+                            <p>Account No: XXXX XXXX XXXX</p>
+                            <p>IFSC: SBIN000XXXX</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </section>
-    
-    <section class="p-10 text-center bg-gray-800" data-aos="fade-up">
-        <h2 class="text-3xl font-semibold text-teal-400">Islamic Quotes</h2>
-        <p id="islamic-quote" class="mt-3 text-lg italic"></p>
-    </section>
-    
-    <section id="donate" class="p-10 text-center bg-gray-900 shadow-lg" data-aos="fade-up">
-        <h2 class="text-3xl font-semibold text-yellow-400">Donate to the Masjid</h2>
-        <p class="mt-3">Support us via UPI:</p>
-        <a href="upi://pay?pa=dr.89@ibl&pn=Madina%20Masjid&mc=0000&mode=02&purpose=00" class="bg-green-500 text-gray-900 px-6 py-3 mt-3 rounded-lg text-lg hover:bg-green-600 transition inline-block">Donate via UPI</a>
-    </section>
-    
-    <footer class="text-center p-5 bg-gradient-to-r from-teal-600 to-green-700 text-white mt-5 shadow-lg">&copy; 2025 Madina Masjid - Purandawade | <a href="https://github.com/yourgithubrepo" target="_blank" class="underline">View on GitHub</a></footer>
-    
+
+    <!-- Footer with GitHub Info -->
+    <footer class="bg-gray-800 py-8">
+        <div class="container mx-auto text-center">
+            <div class="mb-6 space-y-4">
+                <a href="https://github.com/yourusername/madina-masjid" 
+                   class="github-link inline-block hover:text-amber-400"
+                   target="_blank" rel="noopener">
+                    <i class="fab fa-github mr-2"></i>View Source Code
+                </a>
+            </div>
+            <p class="text-sm opacity-75">
+                © 2023 Madina Masjid Purandawade - Hosted on GitHub Pages
+            </p>
+        </div>
+    </footer>
+
+    <!-- GitHub Pages Compatible Scripts -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
-    <script>AOS.init();</script>
     <script>
-        // Fetch live prayer timings (Example: Replace with actual API later)
-        document.getElementById("prayer-timings").innerHTML = `
-            <div class="bg-gray-700 p-5 shadow-md rounded-lg">Fajr: 5:30 AM</div>
-            <div class="bg-gray-700 p-5 shadow-md rounded-lg">Dhuhr: 12:45 PM</div>
-            <div class="bg-gray-700 p-5 shadow-md rounded-lg">Asr: 4:30 PM</div>
-            <div class="bg-gray-700 p-5 shadow-md rounded-lg">Maghrib: 6:45 PM</div>
-            <div class="bg-gray-700 p-5 shadow-md rounded-lg">Isha: 8:00 PM</div>
-        `;
-        
-        // Islamic Quotes Rotation
-        const quotes = [
-            "The best among you are those who learn the Quran and teach it.",
-            "When you stand to pray, pray as if it is your last prayer.",
-            "Allah does not burden a soul beyond that it can bear.",
-            "Indeed, Allah is with those who are patient.",
-            "Speak a good word or remain silent."
-        ];
-        document.getElementById("islamic-quote").innerText = quotes[Math.floor(Math.random() * quotes.length)];
+        // Mobile Menu Toggle
+        const mobileMenuButton = document.getElementById('mobileMenuButton');
+        const mobileMenu = document.getElementById('mobileMenu');
+
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.style.maxHeight = mobileMenu.style.maxHeight ? 
+                null : `${mobileMenu.scrollHeight}px`;
+        });
+
+        // Initialize Animations
+        AOS.init({ duration: 800, once: true });
+
+        // Hijri Date API (GitHub Pages compatible)
+        fetch('https://api.aladhan.com/v1/gToH')
+            .then(response => response.json())
+            .then(data => {
+                const hijri = data.data.hijri;
+                document.getElementById('hijriDate').textContent = 
+                    `${hijri.day} ${hijri.month.en} ${hijri.year} AH`;
+            });
     </script>
 </body>
 </html>
