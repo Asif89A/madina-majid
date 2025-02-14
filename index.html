@@ -103,9 +103,7 @@
       font-weight: 500;
       transition: color 0.3s;
     }
-    nav a:hover {
-      color: #fde047;
-    }
+    nav a:hover { color: #fde047; }
     
     /* Mobile Navigation */
     #navToggle { display: none; }
@@ -197,9 +195,7 @@
       transform: scale(0);
       animation: rippleAnim 0.5s linear;
     }
-    @keyframes rippleAnim {
-      to { transform: scale(4); opacity: 0; }
-    }
+    @keyframes rippleAnim { to { transform: scale(4); opacity: 0; } }
     
     /* Button Hover Effects */
     .hover-animate:hover {
@@ -370,7 +366,7 @@
       </ul>
     </section>
     
-    <!-- Prayer Timings -->
+    <!-- Prayer Timings Section -->
     <section id="prayer-timings" class="text-center" data-aos="fade-up">
       <h2 class="text-3xl font-semibold text-teal-400 animate-slide-in-left">
         Prayer Timings
@@ -435,7 +431,7 @@
       navMenu.classList.toggle('active');
     });
 
-    // Populate Prayer Timings Cards with Premium Effects
+    // Populate Prayer Timings Cards
     const timingsHTML = `
       <div class="prayer-card premium-prayer bg-gray-700 p-5 shadow-md rounded-lg hover-animate" data-aos="fade-up" data-aos-delay="100">
         Fajr: 5:30 AM
