@@ -4,88 +4,67 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Madina Masjid - Purandawade</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
-    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Inter:wght@400;700&display=swap" rel="stylesheet">
-    <style>
-        body { font-family: 'Inter', sans-serif; }
-        h1, h2, h3 { font-family: 'Amiri', serif; }
-        .hero {
-            background: url('https://source.unsplash.com/1600x900/?mosque,prayer') no-repeat center center/cover;
-            height: 80vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            color: white;
-            text-align: center;
-            position: relative;
-        }
-        .overlay {
-            background: rgba(0, 0, 0, 0.6);
-            width: 100%;
-            height: 100%;
-            position: absolute;
-        }
-    </style>
-</head>
-<body class="bg-gradient-to-br from-blue-900 via-gray-900 to-gray-800 text-gray-200">
-    <header class="bg-gradient-to-r from-teal-600 to-green-700 text-white p-6 text-center text-3xl font-bold shadow-lg">Madina Masjid - Purandawade</header>
     
-    <section class="hero relative">
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- AOS (Animate on Scroll) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+    
+    <!-- GSAP for animations -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="bg-gradient-to-r from-teal-600 to-green-700 text-white p-6 text-center text-3xl font-bold shadow-lg">
+        Madina Masjid - Purandawade
+    </header>
+    
+    <section class="hero">
         <div class="overlay"></div>
-        <div class="relative z-10">
-            <h1 class="text-6xl font-bold" data-aos="fade-down">Welcome to Madina Masjid</h1>
-            <p class="mt-4 text-xl" data-aos="fade-up">A place of peace, prayer, and unity.</p>
-            <a href="#donate" class="mt-6 inline-block bg-yellow-400 text-gray-900 px-6 py-3 rounded-lg text-lg hover:bg-yellow-500 transition" data-aos="fade-up">Support Us</a>
+        <div class="content">
+            <h1>Welcome to Madina Masjid</h1>
+            <p>A place of peace, prayer, and unity.</p>
+            <a href="#donate" class="btn">Support Us</a>
         </div>
     </section>
     
-    <section class="p-10 text-center" data-aos="fade-up">
-        <h2 class="text-3xl font-semibold text-teal-400">Islamic Teachings & Knowledge</h2>
-        <p class="mt-3 italic text-lg">“Indeed, prayer prohibits immorality and wrongdoing, and the remembrance of Allah is greater.” - (Quran 29:45)</p>
-        <p class="mt-3">Learn about the teachings of Islam, the importance of Salah, and the significance of community and charity.</p>
+    <section class="section" data-aos="fade-up">
+        <h2>Islamic Teachings & Knowledge</h2>
+        <p class="italic">“Indeed, prayer prohibits immorality and wrongdoing, and the remembrance of Allah is greater.” - (Quran 29:45)</p>
+        <p>Learn about the teachings of Islam, the importance of Salah, and the significance of community and charity.</p>
     </section>
     
-    <section class="p-10 text-center" data-aos="fade-up">
-        <h2 class="text-3xl font-semibold text-teal-400">Prayer Timings</h2>
-        <div id="prayer-timings" class="grid grid-cols-2 md:grid-cols-5 gap-4 mt-4 text-lg"></div>
+    <section class="section" data-aos="fade-up">
+        <h2>Prayer Timings</h2>
+        <div id="prayer-timings" class="timings"></div>
     </section>
     
-    <section class="p-10 text-center bg-gray-800" data-aos="fade-up">
-        <h2 class="text-3xl font-semibold text-teal-400">Islamic Quotes</h2>
-        <p id="islamic-quote" class="mt-3 text-lg italic"></p>
+    <section class="section bg-dark" data-aos="fade-up">
+        <h2>Islamic Quotes</h2>
+        <p id="islamic-quote" class="italic"></p>
     </section>
     
-    <section id="donate" class="p-10 text-center bg-gray-900 shadow-lg" data-aos="fade-up">
-        <h2 class="text-3xl font-semibold text-yellow-400">Donate to the Masjid</h2>
-        <p class="mt-3">Support us via UPI:</p>
-        <a href="upi://pay?pa=dr.89@ibl&pn=Madina%20Masjid&mc=0000&mode=02&purpose=00" class="bg-green-500 text-gray-900 px-6 py-3 mt-3 rounded-lg text-lg hover:bg-green-600 transition inline-block">Donate via UPI</a>
+    <section id="donate" class="section bg-dark" data-aos="fade-up">
+        <h2>Donate to the Masjid</h2>
+        <p>Support us via UPI:</p>
+        <a href="upi://pay?pa=dr.89@ibl&pn=Madina%20Masjid&mc=0000&mode=02&purpose=00" class="btn bg-green-500">Donate via UPI</a>
     </section>
     
-    <footer class="text-center p-5 bg-gradient-to-r from-teal-600 to-green-700 text-white mt-5 shadow-lg">&copy; 2025 Madina Masjid - Purandawade | <a href="https://github.com/yourgithubrepo" target="_blank" class="underline">View on GitHub</a></footer>
-    
+    <footer class="footer">
+        &copy; 2025 Madina Masjid - Purandawade | <a href="https://github.com/yourgithubrepo" target="_blank">View on GitHub</a>
+    </footer>
+
+    <!-- AOS Script -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
     <script>AOS.init();</script>
-    <script>
-        // Fetch live prayer timings (Example: Replace with actual API later)
-        document.getElementById("prayer-timings").innerHTML = `
-            <div class="bg-gray-700 p-5 shadow-md rounded-lg">Fajr: 5:30 AM</div>
-            <div class="bg-gray-700 p-5 shadow-md rounded-lg">Dhuhr: 12:45 PM</div>
-            <div class="bg-gray-700 p-5 shadow-md rounded-lg">Asr: 4:30 PM</div>
-            <div class="bg-gray-700 p-5 shadow-md rounded-lg">Maghrib: 6:45 PM</div>
-            <div class="bg-gray-700 p-5 shadow-md rounded-lg">Isha: 8:00 PM</div>
-        `;
-        
-        // Islamic Quotes Rotation
-        const quotes = [
-            "The best among you are those who learn the Quran and teach it.",
-            "When you stand to pray, pray as if it is your last prayer.",
-            "Allah does not burden a soul beyond that it can bear.",
-            "Indeed, Allah is with those who are patient.",
-            "Speak a good word or remain silent."
-        ];
-        document.getElementById("islamic-quote").innerText = quotes[Math.floor(Math.random() * quotes.length)];
-    </script>
+
+    <!-- Custom JavaScript -->
+    <script src="script.js" defer></script>
 </body>
 </html>
