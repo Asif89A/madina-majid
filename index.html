@@ -4,37 +4,56 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Madina Masjid Purandawade</title>
-  
-  <!-- Set the mobile browser's address bar color (Android Chrome) -->
+
+  <!-- 1) Theme color for Android Chrome -->
   <meta name="theme-color" content="#14b8a6" />
-  
-  <!-- For iOS Safari (optional) -->
+
+  <!-- 2) Optional iOS Safari meta tags -->
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-  
-  <!-- Tailwind CSS -->
+
+  <!-- 3) Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
-  
-  <!-- AOS Animation Library -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />
-  
-  <!-- FontAwesome -->
-  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
-  
-  <!-- Google Fonts: Playfair Display for headings, Source Sans Pro for body -->
+
+  <!-- 4) AOS Animation Library CSS -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css"
+    integrity="sha512-3a+rV1+R1ZD+GepBwV3coU6WrLq6pYFv9bBtwTwDYHWD+9T6wE8BpVDn/mkNeWn9cESWvb2woIX4iqJ/pY5DsQ=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  />
+
+  <!-- 5) Font Awesome (CDN version) -->
+  <script
+    src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/js/all.min.js"
+    integrity="sha512-EJ8fA7xz5/hLFl9v7cJZYlbUI0D/EWYPkDJHtcQLt/3j/girGukqOETkIvQ3xpsUn6bRG8Ea6tKFC9HT9BK+qg=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  ></script>
+
+  <!-- 6) Google Fonts: Playfair Display & Source Sans Pro -->
   <link
     href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Source+Sans+Pro:wght@300;400;600;700&display=swap"
     rel="stylesheet"
   />
-  
+
   <style>
     /* Smooth Scroll */
-    html { scroll-behavior: smooth; }
-    
-    /* Global Typography */
-    body { font-family: 'Source Sans Pro', sans-serif; }
-    h1, h2, h3, .masjid-title { font-family: 'Playfair Display', serif; }
-    
+    html {
+      scroll-behavior: smooth;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Source Sans Pro', sans-serif;
+    }
+    h1, h2, h3, .masjid-title {
+      font-family: 'Playfair Display', serif;
+    }
+
     /* Fixed Navigation Bar */
     nav {
       position: fixed;
@@ -54,6 +73,7 @@
       justify-content: space-between;
       align-items: center;
     }
+
     /* Header Title with Premium Icon */
     .header-title {
       display: flex;
@@ -66,8 +86,12 @@
       animation: pulseIcon 2s infinite;
     }
     @keyframes pulseIcon {
-      0%, 100% { transform: scale(1); }
-      50% { transform: scale(1.2); }
+      0%, 100% {
+        transform: scale(1);
+      }
+      50% {
+        transform: scale(1.2);
+      }
     }
     .header-title span {
       color: #fff;
@@ -76,6 +100,7 @@
       text-transform: uppercase;
       letter-spacing: 2px;
     }
+
     nav ul {
       display: flex;
       gap: 1.5rem;
@@ -85,19 +110,35 @@
       font-weight: 500;
       transition: color 0.3s;
     }
-    nav a:hover { color: #fde047; }
-    /* Mobile Navigation */
-    #navToggle { display: none; }
-    @media (max-width: 767px) {
-      #navToggle { display: block; }
-      #navMenu { display: none; }
-      #navMenu.active { display: block; }
-      nav ul { flex-direction: column; gap: 1rem; margin-top: 0.5rem; }
+    nav a:hover {
+      color: #fde047;
     }
-    
+
+    /* Mobile Navigation */
+    #navToggle {
+      display: none;
+    }
+    @media (max-width: 767px) {
+      #navToggle {
+        display: block;
+      }
+      #navMenu {
+        display: none;
+      }
+      #navMenu.active {
+        display: block;
+      }
+      nav ul {
+        flex-direction: column;
+        gap: 1rem;
+        margin-top: 0.5rem;
+      }
+    }
+
     /* Hero Section */
     .hero {
-      background: url('https://source.unsplash.com/1600x900/?mosque,prayer') no-repeat center center/cover;
+      background: url('https://source.unsplash.com/1600x900/?mosque,prayer')
+        no-repeat center center/cover;
       height: 80vh;
       display: flex;
       justify-content: center;
@@ -111,8 +152,14 @@
       inset: 0;
     }
     @keyframes fadeIn {
-      0% { opacity: 0; transform: scale(0.9); }
-      100% { opacity: 1; transform: scale(1); }
+      0% {
+        opacity: 0;
+        transform: scale(0.9);
+      }
+      100% {
+        opacity: 1;
+        transform: scale(1);
+      }
     }
     .gradient-text {
       background: linear-gradient(90deg, #fde047, #facc15);
@@ -121,38 +168,79 @@
       animation: gradientText 4s ease infinite;
     }
     @keyframes gradientText {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
+      0% {
+        background-position: 0% 50%;
+      }
+      50% {
+        background-position: 100% 50%;
+      }
+      100% {
+        background-position: 0% 50%;
+      }
     }
-    
+
     /* Animations */
-    .animate-bounce { animation: bounce 1.5s infinite; }
+    .animate-bounce {
+      animation: bounce 1.5s infinite;
+    }
     @keyframes bounce {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-10px); }
+      0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-10px);
+      }
     }
     @keyframes slideInLeft {
-      0% { opacity: 0; transform: translateX(-50px); }
-      100% { opacity: 1; transform: translateX(0); }
+      0% {
+        opacity: 0;
+        transform: translateX(-50px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateX(0);
+      }
     }
     @keyframes slideInRight {
-      0% { opacity: 0; transform: translateX(50px); }
-      100% { opacity: 1; transform: translateX(0); }
+      0% {
+        opacity: 0;
+        transform: translateX(50px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateX(0);
+      }
     }
-    .animate-slide-in-left { animation: slideInLeft 1s ease forwards; }
-    .animate-slide-in-right { animation: slideInRight 1s ease forwards; }
-    
+    .animate-slide-in-left {
+      animation: slideInLeft 1s ease forwards;
+    }
+    .animate-slide-in-right {
+      animation: slideInRight 1s ease forwards;
+    }
     @keyframes fadeUp {
-      0% { opacity: 0; transform: translateY(20px); }
-      100% { opacity: 1; transform: translateY(0); }
+      0% {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
-    .animate-fade-up { animation: fadeUp 1s ease forwards; }
-    
+    .animate-fade-up {
+      animation: fadeUp 1s ease forwards;
+    }
+
     @keyframes gradientBG {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
+      0% {
+        background-position: 0% 50%;
+      }
+      50% {
+        background-position: 100% 50%;
+      }
+      100% {
+        background-position: 0% 50%;
+      }
     }
     .header-animate {
       background-size: 200% 200%;
@@ -162,9 +250,12 @@
       text-shadow: 0 0 10px #fff;
       transition: text-shadow 0.3s ease;
     }
-    
+
     /* Ripple Effect */
-    .ripple { position: relative; overflow: hidden; }
+    .ripple {
+      position: relative;
+      overflow: hidden;
+    }
     .ripple-effect {
       position: absolute;
       border-radius: 50%;
@@ -172,8 +263,13 @@
       transform: scale(0);
       animation: rippleAnim 0.5s linear;
     }
-    @keyframes rippleAnim { to { transform: scale(4); opacity: 0; } }
-    
+    @keyframes rippleAnim {
+      to {
+        transform: scale(4);
+        opacity: 0;
+      }
+    }
+
     /* Button Hover Effects */
     .hover-animate:hover {
       transform: scale(1.05);
@@ -184,8 +280,11 @@
       transition: transform 0.3s ease, box-shadow 0.3s ease;
       box-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
     }
-    .prayer-card:hover { transform: rotate(1deg); transition: transform 0.3s ease; }
-    
+    .prayer-card:hover {
+      transform: rotate(1deg);
+      transition: transform 0.3s ease;
+    }
+
     /* Premium Effect for Prayer Timings */
     .premium-prayer {
       position: relative;
@@ -197,7 +296,7 @@
       border: 2px solid;
       border-image: linear-gradient(45deg, #fde047, #facc15) 1;
     }
-    
+
     /* Enhanced Emoji Animations in Teachings */
     .emoji {
       display: inline-block;
@@ -205,30 +304,56 @@
       transition: transform 0.3s ease, filter 0.3s ease;
     }
     @keyframes spinPulse {
-      0% { transform: scale(1) rotate(0deg); }
-      25% { transform: scale(1.05) rotate(10deg); }
-      50% { transform: scale(1) rotate(0deg); }
-      75% { transform: scale(1.05) rotate(-10deg); }
-      100% { transform: scale(1) rotate(0deg); }
+      0% {
+        transform: scale(1) rotate(0deg);
+      }
+      25% {
+        transform: scale(1.05) rotate(10deg);
+      }
+      50% {
+        transform: scale(1) rotate(0deg);
+      }
+      75% {
+        transform: scale(1.05) rotate(-10deg);
+      }
+      100% {
+        transform: scale(1) rotate(0deg);
+      }
     }
     .emoji:hover {
       animation: shakeEmoji 0.5s;
       filter: drop-shadow(0 0 5px #fde047) hue-rotate(45deg);
     }
     @keyframes shakeEmoji {
-      0% { transform: rotate(0deg); }
-      25% { transform: rotate(10deg); }
-      50% { transform: rotate(0deg); }
-      75% { transform: rotate(-10deg); }
-      100% { transform: rotate(0deg); }
+      0% {
+        transform: rotate(0deg);
+      }
+      25% {
+        transform: rotate(10deg);
+      }
+      50% {
+        transform: rotate(0deg);
+      }
+      75% {
+        transform: rotate(-10deg);
+      }
+      100% {
+        transform: rotate(0deg);
+      }
     }
-    
+
     /* Masjid Title */
-    .masjid-title { font-size: 2.8rem; font-weight: 700; letter-spacing: 1px; }
-    
+    .masjid-title {
+      font-size: 2.8rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+    }
+
     /* Section Spacing */
-    section { padding: 4rem 1rem; }
-    
+    section {
+      padding: 4rem 1rem;
+    }
+
     /* Back to Top Button */
     #backToTop {
       position: fixed;
@@ -240,14 +365,19 @@
       border-radius: 9999px;
       display: none;
       cursor: pointer;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
       transition: background 0.3s;
       z-index: 1001;
     }
-    #backToTop:hover { background: #0d9488; }
+    #backToTop:hover {
+      background: #0d9488;
+    }
   </style>
 </head>
+
+<!-- Body background gradient -->
 <body class="bg-gradient-to-br from-blue-900 via-gray-900 to-gray-800 text-gray-200">
+
   <!-- Fixed Navigation Bar -->
   <header>
     <nav>
@@ -282,7 +412,9 @@
     <section id="hero" class="hero relative parallax" role="banner">
       <div class="overlay"></div>
       <div class="relative z-10 text-center" data-aos="zoom-in">
-        <h1 class="text-6xl font-bold animate-fade-in gradient-text">Welcome to Madina Masjid Purandawade</h1>
+        <h1 class="text-6xl font-bold animate-fade-in gradient-text">
+          Welcome to Madina Masjid Purandawade
+        </h1>
         <p class="mt-4 text-xl">A place of peace, prayer, and unity.</p>
         <a
           href="#donate"
@@ -297,7 +429,9 @@
 
     <!-- Islamic Teachings & Knowledge -->
     <section id="teachings" class="text-center" data-aos="fade-up">
-      <h2 class="text-3xl font-semibold text-teal-400 animate-slide-in-left">Islamic Teachings &amp; Knowledge</h2>
+      <h2 class="text-3xl font-semibold text-teal-400 animate-slide-in-left">
+        Islamic Teachings &amp; Knowledge
+      </h2>
       <p class="mt-3 italic text-lg animate-slide-in-right">
         “Indeed, prayer prohibits immorality and wrongdoing, and the remembrance of Allah is greater.” - (Quran 29:45)
       </p>
@@ -306,43 +440,60 @@
       </p>
       <ul class="mt-5 space-y-3 text-lg">
         <li class="animate-fade-up" style="animation-delay: 100ms;">
-          <span class="emoji">📖</span> <strong>The Five Pillars of Islam:</strong> Shahada, Salah, Zakat, Sawm, and Hajj.
+          <span class="emoji">📖</span>
+          <strong>The Five Pillars of Islam:</strong> Shahada, Salah, Zakat, Sawm, and Hajj.
         </li>
         <li class="animate-fade-up" style="animation-delay: 200ms;">
-          <span class="emoji">🕌</span> <strong>The Importance of Salah:</strong> Daily prayers keep the heart connected to Allah.
+          <span class="emoji">🕌</span>
+          <strong>The Importance of Salah:</strong> Daily prayers keep the heart connected to Allah.
         </li>
         <li class="animate-fade-up" style="animation-delay: 300ms;">
-          <span class="emoji">❤️</span> <strong>Charity (Sadaqah &amp; Zakat):</strong> Helping those in need is a core Islamic value.
+          <span class="emoji">❤️</span>
+          <strong>Charity (Sadaqah &amp; Zakat):</strong> Helping those in need is a core Islamic value.
         </li>
         <li class="animate-fade-up" style="animation-delay: 400ms;">
-          <span class="emoji">📜</span> <strong>Hadith Wisdom:</strong> "The best among you are those who have the best manners and character."
+          <span class="emoji">📜</span>
+          <strong>Hadith Wisdom:</strong> "The best among you are those who have the best manners and character."
         </li>
         <li class="animate-fade-up" style="animation-delay: 500ms;">
-          <span class="emoji">🕋</span> <strong>The Quran:</strong> The final revelation and guidance for mankind.
+          <span class="emoji">🕋</span>
+          <strong>The Quran:</strong> The final revelation and guidance for mankind.
         </li>
         <li class="animate-fade-up" style="animation-delay: 600ms;">
-          <span class="emoji">🌙</span> <strong>Fasting (Sawm):</strong> A means to attain self-discipline and closeness to Allah.
+          <span class="emoji">🌙</span>
+          <strong>Fasting (Sawm):</strong> A means to attain self-discipline and closeness to Allah.
         </li>
       </ul>
     </section>
 
     <!-- Prayer Timings -->
     <section id="prayer-timings" class="text-center" data-aos="fade-up">
-      <h2 class="text-3xl font-semibold text-teal-400 animate-slide-in-left">Prayer Timings</h2>
+      <h2 class="text-3xl font-semibold text-teal-400 animate-slide-in-left">
+        Prayer Timings
+      </h2>
       <div class="grid grid-cols-2 md:grid-cols-5 gap-4 mt-4 text-lg" id="timing-cards"></div>
     </section>
 
     <!-- Islamic Quotes -->
     <section class="text-center bg-gray-800" data-aos="fade-up">
-      <h2 class="text-3xl font-semibold text-teal-400 animate-slide-in-right">Islamic Quotes</h2>
+      <h2 class="text-3xl font-semibold text-teal-400 animate-slide-in-right">
+        Islamic Quotes
+      </h2>
       <p id="islamic-quote" class="mt-3 text-lg italic animate-fade-in">
         “And He found you lost and guided [you].” - (Quran 93:7)
       </p>
     </section>
 
     <!-- Donate Section -->
-    <section id="donate" class="text-center bg-gray-900 shadow-lg" data-aos="flip-up" data-aos-delay="300">
-      <h2 class="text-3xl font-semibold text-yellow-400 animate-slide-in-right">Donate to the Masjid</h2>
+    <section
+      id="donate"
+      class="text-center bg-gray-900 shadow-lg"
+      data-aos="flip-up"
+      data-aos-delay="300"
+    >
+      <h2 class="text-3xl font-semibold text-yellow-400 animate-slide-in-right">
+        Donate to the Masjid
+      </h2>
       <p class="mt-3">Support us via UPI:</p>
       <div class="flex justify-center mt-4">
         <a
@@ -362,14 +513,26 @@
     role="contentinfo"
   >
     &copy; 2025 Madina Masjid Purandawade |
-    <a href="https://github.com/yourgithubrepo" target="_blank" class="underline">View on GitHub</a>
+    <a
+      href="https://github.com/yourgithubrepo"
+      target="_blank"
+      class="underline"
+      >View on GitHub</a
+    >
   </footer>
 
   <!-- Back to Top Button -->
-  <div id="backToTop"><i class="fas fa-arrow-up"></i></div>
+  <div id="backToTop">
+    <i class="fas fa-arrow-up"></i>
+  </div>
 
   <!-- Scripts -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+  <script
+    src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"
+    integrity="sha512-qw9y+TqpZdlN0Dncaf2HjaRMTjCNiPsP3bQLDgNBY7Zp25HrLY0Fe6H8tFGr4LOPl16T9G8aw/HRnJUI28qwLA=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  ></script>
   <script>
     // Initialize AOS
     AOS.init();
@@ -381,16 +544,47 @@
       navMenu.classList.toggle('active');
     });
 
-    // Populate Prayer Timings Cards with Premium Effects
+    // Populate Prayer Timings Cards
     const timingsHTML = `
-      <div class="prayer-card premium-prayer bg-gray-700 p-5 shadow-md rounded-lg hover-animate" data-aos="fade-up" data-aos-delay="100">Fajr: 5:30 AM</div>
-      <div class="prayer-card premium-prayer bg-gray-700 p-5 shadow-md rounded-lg hover-animate" data-aos="fade-up" data-aos-delay="200">Dhuhr: 12:45 PM</div>
-      <div class="prayer-card premium-prayer bg-gray-700 p-5 shadow-md rounded-lg hover-animate" data-aos="fade-up" data-aos-delay="300">Asr: 4:30 PM</div>
-      <div class="prayer-card premium-prayer bg-gray-700 p-5 shadow-md rounded-lg hover-animate" data-aos="fade-up" data-aos-delay="400">Maghrib: 6:45 PM</div>
-      <div class="prayer-card premium-prayer bg-gray-700 p-5 shadow-md rounded-lg hover-animate" data-aos="fade-up" data-aos-delay="500">Isha: 8:00 PM</div>`;
-    document.getElementById("timing-cards").innerHTML = timingsHTML;
+      <div
+        class="prayer-card premium-prayer bg-gray-700 p-5 shadow-md rounded-lg hover-animate"
+        data-aos="fade-up"
+        data-aos-delay="100"
+      >
+        Fajr: 5:30 AM
+      </div>
+      <div
+        class="prayer-card premium-prayer bg-gray-700 p-5 shadow-md rounded-lg hover-animate"
+        data-aos="fade-up"
+        data-aos-delay="200"
+      >
+        Dhuhr: 12:45 PM
+      </div>
+      <div
+        class="prayer-card premium-prayer bg-gray-700 p-5 shadow-md rounded-lg hover-animate"
+        data-aos="fade-up"
+        data-aos-delay="300"
+      >
+        Asr: 4:30 PM
+      </div>
+      <div
+        class="prayer-card premium-prayer bg-gray-700 p-5 shadow-md rounded-lg hover-animate"
+        data-aos="fade-up"
+        data-aos-delay="400"
+      >
+        Maghrib: 6:45 PM
+      </div>
+      <div
+        class="prayer-card premium-prayer bg-gray-700 p-5 shadow-md rounded-lg hover-animate"
+        data-aos="fade-up"
+        data-aos-delay="500"
+      >
+        Isha: 8:00 PM
+      </div>
+    `;
+    document.getElementById('timing-cards').innerHTML = timingsHTML;
 
-    // Ripple Effect for elements with class 'ripple'
+    // Ripple Effect
     document.querySelectorAll('.ripple').forEach(element => {
       element.addEventListener('click', function(e) {
         const circle = document.createElement('span');
@@ -401,12 +595,15 @@
         circle.style.top = \`\${e.clientY - this.offsetTop - radius}px\`;
         circle.classList.add('ripple-effect');
         this.appendChild(circle);
+
+        // Remove ripple after animation
         setTimeout(() => {
           circle.remove();
-          if (this.classList.contains("animate-bounce")) {
-            this.classList.remove("animate-bounce");
-            void this.offsetWidth;
-            this.classList.add("animate-bounce");
+          // Re-trigger bounce animation if present
+          if (this.classList.contains('animate-bounce')) {
+            this.classList.remove('animate-bounce');
+            void this.offsetWidth; // Force reflow
+            this.classList.add('animate-bounce');
           }
         }, 500);
       });
@@ -421,7 +618,7 @@
         : '<i class="fas fa-sun"></i>';
     });
 
-    // Back to Top Button Functionality
+    // Back to Top Button
     const backToTop = document.getElementById('backToTop');
     window.addEventListener('scroll', () => {
       backToTop.style.display = window.pageYOffset > 300 ? 'block' : 'none';
