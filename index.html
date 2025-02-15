@@ -22,15 +22,31 @@
       --dark-bg: #1f2937;
       --light-bg: #ffffff;
     }
-    html { scroll-behavior: smooth; }
-    body { font-family: 'Inter', sans-serif; }
-    h1, h2, h3, .masjid-title { font-family: 'Playfair Display', serif; }
+    html {
+      scroll-behavior: smooth;
+    }
+    body {
+      font-family: 'Inter', sans-serif;
+    }
+    h1, h2, h3, .masjid-title {
+      font-family: 'Playfair Display', serif;
+    }
 
-    /* Global Styles */
-    body.bg-dark { background: var(--dark-bg); color: #f3f4f6; }
-    body.bg-light { background: var(--light-bg); color: var(--dark-bg); }
+    /* Global Background Modes */
+    body.bg-dark {
+      background: var(--dark-bg);
+      color: #f3f4f6;
+    }
+    body.bg-light {
+      background: var(--light-bg);
+      color: var(--dark-bg);
+    }
 
-    /* Improved Header */
+    /* ----------------------- */
+    /* HEADER & NAVIGATION     */
+    /* ----------------------- */
+
+    /* Header starts transparent and changes on scroll */
     header {
       position: fixed;
       top: 0;
@@ -39,11 +55,9 @@
       z-index: 1000;
       transition: background 0.3s ease, box-shadow 0.3s ease;
     }
-    /* Start header transparent */
     header.transparent {
       background: transparent;
     }
-    /* When scrolled add a solid background and shadow */
     header.scrolled {
       background: var(--primary-color);
       box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
@@ -86,22 +100,38 @@
       font-weight: 500;
       transition: color 0.3s;
     }
-    .nav-links a:hover { color: var(--accent-color); }
-    /* Mobile Menu Button */
-    #navToggle { display: none; }
+    .nav-links a:hover {
+      color: var(--accent-color);
+    }
+    /* Mobile Menu Button (hamburger) */
+    #navToggle {
+      display: none;
+    }
     @media (max-width: 768px) {
-      #navToggle { display: block; }
-      .nav-links { display: none; }
+      #navToggle {
+        display: block;
+      }
+      .nav-links {
+        display: none;
+      }
       #mobileMenu {
         display: none;
         background: var(--primary-color);
       }
-      #mobileMenu.active { display: block; }
-      #mobileMenu ul { padding: 0.5rem 1.5rem; }
-      #mobileMenu li + li { margin-top: 0.5rem; }
+      #mobileMenu.active {
+        display: block;
+      }
+      #mobileMenu ul {
+        padding: 0.5rem 1.5rem;
+      }
+      #mobileMenu li + li {
+        margin-top: 0.5rem;
+      }
     }
 
-    /* Hero Section */
+    /* ----------------------- */
+    /* HERO SECTION            */
+    /* ----------------------- */
     .hero {
       background: url('https://source.unsplash.com/1600x900/?mosque,architecture') no-repeat center center/cover;
       height: 90vh;
@@ -139,14 +169,17 @@
       100% { background-position: 0% 50%; }
     }
 
-    /* Sections */
-    section { padding: 4rem 1rem; }
+    /* ----------------------- */
+    /* SECTIONS & COMPONENTS   */
+    /* ----------------------- */
+    section {
+      padding: 4rem 1rem;
+    }
     .section-title {
       font-size: 2.5rem;
       color: var(--accent-color);
       margin-bottom: 1rem;
     }
-    
     /* Cards & Buttons */
     .card {
       background: #2d3748;
@@ -155,7 +188,10 @@
       box-shadow: 0 4px 6px rgba(0,0,0,0.2);
       transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
-    .card:hover { transform: translateY(-5px); box-shadow: 0 8px 12px rgba(0,0,0,0.3); }
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 12px rgba(0,0,0,0.3);
+    }
     .btn {
       display: inline-block;
       padding: 0.75rem 1.5rem;
@@ -166,14 +202,20 @@
       background: var(--accent-color);
       color: #1f2937;
     }
-    .btn-primary:hover { transform: scale(1.05); }
+    .btn-primary:hover {
+      transform: scale(1.05);
+    }
     .btn-secondary {
       background: var(--secondary-color);
       color: #fff;
     }
-    .btn-secondary:hover { background: var(--primary-color); }
+    .btn-secondary:hover {
+      background: var(--primary-color);
+    }
 
-    /* Back to Top Button */
+    /* ----------------------- */
+    /* BACK TO TOP BUTTON      */
+    /* ----------------------- */
     #backToTop {
       position: fixed;
       bottom: 20px;
@@ -188,10 +230,17 @@
       transition: background 0.3s;
       z-index: 1001;
     }
-    #backToTop:hover { background: #0d9488; }
+    #backToTop:hover {
+      background: #0d9488;
+    }
 
-    /* Ripple Effect */
-    .ripple { position: relative; overflow: hidden; }
+    /* ----------------------- */
+    /* RIPPLE EFFECT           */
+    /* ----------------------- */
+    .ripple {
+      position: relative;
+      overflow: hidden;
+    }
     .ripple-effect {
       position: absolute;
       border-radius: 50%;
@@ -199,9 +248,13 @@
       transform: scale(0);
       animation: rippleAnim 0.6s linear;
     }
-    @keyframes rippleAnim { to { transform: scale(4); opacity: 0; } }
+    @keyframes rippleAnim {
+      to { transform: scale(4); opacity: 0; }
+    }
 
-    /* Chatbot Styles */
+    /* ----------------------- */
+    /* CHATBOT STYLES          */
+    /* ----------------------- */
     #chatbot {
       position: fixed;
       bottom: 90px;
@@ -262,7 +315,7 @@
     <img src="https://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png" alt="Fork me on GitHub">
   </a>
   
-  <!-- Improved Header -->
+  <!-- HEADER & NAVIGATION -->
   <header id="mainHeader" class="transparent">
     <nav>
       <div class="header-title masjid-title">
@@ -301,12 +354,14 @@
   <!-- Spacer for Fixed Header -->
   <div class="h-24"></div>
   
-  <!-- Main Content -->
+  <!-- MAIN CONTENT -->
   <main>
-    <!-- Hero Section -->
+    <!-- HERO SECTION -->
     <section id="hero" class="hero" role="banner">
       <div class="hero-content" data-aos="zoom-in">
-        <h1 class="text-5xl md:text-6xl font-bold gradient-text">Welcome to Madina Masjid Purandawade</h1>
+        <h1 class="text-5xl md:text-6xl font-bold gradient-text">
+          Welcome to Madina Masjid Purandawade
+        </h1>
         <p class="mt-4 text-xl">A sanctuary of peace, prayer, and unity.</p>
         <a href="#donate" class="ripple btn btn-primary mt-6 inline-block" data-aos="fade-up" aria-label="Support Us">
           Support Us
@@ -314,7 +369,7 @@
       </div>
     </section>
     
-    <!-- Teachings Section -->
+    <!-- TEACHINGS SECTION -->
     <section id="teachings" class="text-center" data-aos="fade-up">
       <h2 class="section-title">Islamic Teachings &amp; Knowledge</h2>
       <p class="italic text-lg mb-6" data-aos="fade-up">
@@ -322,33 +377,39 @@
       </p>
       <ul class="space-y-4 text-lg">
         <li data-aos="fade-up" data-aos-delay="100">
-          <span class="emoji inline-block">📖</span> <strong>The Five Pillars of Islam:</strong> Shahada, Salah, Zakat, Sawm, and Hajj.
+          <span class="emoji inline-block">📖</span>
+          <strong>The Five Pillars of Islam:</strong> Shahada, Salah, Zakat, Sawm, and Hajj.
         </li>
         <li data-aos="fade-up" data-aos-delay="200">
-          <span class="emoji inline-block">🕌</span> <strong>The Importance of Salah:</strong> Daily prayers connect the heart to Allah.
+          <span class="emoji inline-block">🕌</span>
+          <strong>The Importance of Salah:</strong> Daily prayers connect the heart to Allah.
         </li>
         <li data-aos="fade-up" data-aos-delay="300">
-          <span class="emoji inline-block">❤️</span> <strong>Charity (Sadaqah &amp; Zakat):</strong> Compassion and generosity are core values.
+          <span class="emoji inline-block">❤️</span>
+          <strong>Charity (Sadaqah &amp; Zakat):</strong> Compassion and generosity are core values.
         </li>
         <li data-aos="fade-up" data-aos-delay="400">
-          <span class="emoji inline-block">📜</span> <strong>Hadith Wisdom:</strong> “The best among you are those with the best manners.”
+          <span class="emoji inline-block">📜</span>
+          <strong>Hadith Wisdom:</strong> “The best among you are those with the best manners.”
         </li>
         <li data-aos="fade-up" data-aos-delay="500">
-          <span class="emoji inline-block">🕋</span> <strong>The Quran:</strong> The ultimate guidance for humanity.
+          <span class="emoji inline-block">🕋</span>
+          <strong>The Quran:</strong> The ultimate guidance for humanity.
         </li>
         <li data-aos="fade-up" data-aos-delay="600">
-          <span class="emoji inline-block">🌙</span> <strong>Fasting (Sawm):</strong> A path to spiritual discipline and closeness to Allah.
+          <span class="emoji inline-block">🌙</span>
+          <strong>Fasting (Sawm):</strong> A path to spiritual discipline and closeness to Allah.
         </li>
       </ul>
     </section>
     
-    <!-- Prayer Timings Section -->
+    <!-- PRAYER TIMINGS SECTION -->
     <section id="prayer-timings" class="text-center" data-aos="fade-up">
       <h2 class="section-title">Prayer Timings</h2>
       <div id="timing-cards" class="grid grid-cols-2 md:grid-cols-5 gap-4 mt-6"></div>
     </section>
     
-    <!-- Islamic Quotes Section -->
+    <!-- ISLAMIC QUOTES SECTION -->
     <section class="text-center bg-gray-800 py-12" data-aos="fade-up">
       <h2 class="section-title" data-aos="fade-up">Islamic Quotes</h2>
       <p id="islamic-quote" class="italic text-lg mt-4" data-aos="fade-in">
@@ -356,7 +417,7 @@
       </p>
     </section>
     
-    <!-- Donate Section -->
+    <!-- DONATE SECTION -->
     <section id="donate" class="text-center bg-gray-900 py-12 shadow-lg" data-aos="flip-up" data-aos-delay="300">
       <h2 class="section-title text-yellow-400" data-aos="fade-up">Donate to the Masjid</h2>
       <p class="mt-4">Support us via UPI:</p>
@@ -368,7 +429,7 @@
       </div>
     </section>
     
-    <!-- Contact Section -->
+    <!-- CONTACT SECTION -->
     <section id="contact" class="text-center" data-aos="fade-up">
       <h2 class="section-title">Contact Us</h2>
       <p class="mt-4">Have questions or need assistance? Reach out to us!</p>
@@ -380,7 +441,7 @@
       </form>
     </section>
     
-    <!-- FAQ Section -->
+    <!-- FAQ SECTION -->
     <section id="faq" class="text-center" data-aos="fade-up">
       <h2 class="section-title">Frequently Asked Questions</h2>
       <div class="max-w-2xl mx-auto mt-8 space-y-4">
@@ -400,7 +461,7 @@
     </section>
   </main>
   
-  <!-- Footer -->
+  <!-- FOOTER -->
   <footer class="text-center p-5 bg-gradient-to-r from-teal-600 to-green-700 text-white mt-10 shadow-lg" role="contentinfo" data-aos="fade-in">
     &copy; 2025 Madina Masjid Purandawade | 
     <a href="https://github.com/yourgithubrepo" target="_blank" class="underline">View on GitHub</a>
@@ -412,10 +473,10 @@
     </div>
   </footer>
   
-  <!-- Back to Top Button -->
+  <!-- BACK TO TOP BUTTON -->
   <div id="backToTop"><i class="fas fa-arrow-up"></i></div>
   
-  <!-- AI Chatbot -->
+  <!-- AI CHATBOT -->
   <div id="chatbot">
     <div class="chatbot-header">
       <span>AI Chatbot</span>
@@ -430,22 +491,22 @@
   </div>
   <button id="chatbotToggle" aria-label="Open Chatbot"><i class="fas fa-comments"></i></button>
   
-  <!-- Scripts -->
+  <!-- SCRIPTS -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
   <script>
     AOS.init();
 
-    // Mobile Navigation Toggle
+    /* Mobile Navigation Toggle */
     const navToggle = document.getElementById('navToggle');
     const mobileMenu = document.getElementById('mobileMenu');
     navToggle.addEventListener('click', () => {
       mobileMenu.classList.toggle('active');
     });
     
-    // Header Background Change on Scroll
+    /* Dynamic Header Background on Scroll */
     const header = document.getElementById('mainHeader');
     window.addEventListener('scroll', () => {
-      if(window.scrollY > 50) {
+      if (window.scrollY > 50) {
         header.classList.remove('transparent');
         header.classList.add('scrolled');
       } else {
@@ -454,7 +515,7 @@
       }
     });
     
-    // Populate Prayer Timings Cards
+    /* Populate Prayer Timings */
     const timingsHTML = `
       <div class="card" data-aos="fade-up" data-aos-delay="100">Fajr: 5:30 AM</div>
       <div class="card" data-aos="fade-up" data-aos-delay="200">Dhuhr: 12:45 PM</div>
@@ -464,7 +525,7 @@
     `;
     document.getElementById("timing-cards").innerHTML = timingsHTML;
     
-    // Ripple Effect for Elements with .ripple
+    /* Ripple Effect for Elements with .ripple */
     document.querySelectorAll('.ripple').forEach(element => {
       element.addEventListener('click', function(e) {
         const circle = document.createElement('span');
@@ -479,7 +540,7 @@
       });
     });
     
-    // Dark/Light Mode Toggle
+    /* Dark/Light Mode Toggle */
     const modeToggle = document.getElementById('modeToggle');
     modeToggle.addEventListener('click', () => {
       document.body.classList.toggle('bg-light');
@@ -489,7 +550,7 @@
         : '<i class="fas fa-sun"></i>';
     });
     
-    // Back to Top Button Functionality
+    /* Back to Top Button */
     const backToTop = document.getElementById('backToTop');
     window.addEventListener('scroll', () => {
       backToTop.style.display = window.pageYOffset > 300 ? 'block' : 'none';
@@ -498,7 +559,7 @@
       window.scrollTo({ top: 0, behavior: 'smooth' });
     });
     
-    // AI Chatbot Toggle
+    /* AI Chatbot Toggle & Interaction */
     const chatbotToggle = document.getElementById('chatbotToggle');
     const chatbot = document.getElementById('chatbot');
     const chatbotClose = document.getElementById('chatbotClose');
@@ -529,7 +590,7 @@
       }
     });
     
-    // Scroll Spy for Navigation
+    /* Scroll Spy for Navigation */
     const sections = document.querySelectorAll('main section');
     const navLinks = document.querySelectorAll('.nav-links a');
     window.addEventListener('scroll', () => {
