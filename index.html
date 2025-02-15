@@ -325,21 +325,6 @@
       #chatbot { width: 95%; right: 2.5%; bottom: 90px; }
       #navMenu.active { width: 100%; }
     }
-    
-    /* Cookie Consent Banner */
-    #cookieConsent {
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      background: #2d3748;
-      color: #e2e8f0;
-      padding: 1rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      z-index: 50;
-    }
   </style>
 </head>
 <body class="bg-gradient-to-br from-blue-900 via-gray-900 to-gray-800 text-gray-200">
@@ -386,6 +371,7 @@
       <div class="relative z-10 text-center" data-aos="zoom-in">
         <h1 class="text-6xl font-bold animate-fade-in gradient-text">Welcome to Madina Masjid Purandawade</h1>
         <p class="mt-4 text-xl">A place of peace, prayer, and unity.</p>
+        <!-- "Support Us" now scrolls to the Donate section -->
         <a href="#donate"   
            class="ripple mt-6 inline-block bg-yellow-400 text-gray-900 px-6 py-3 rounded-lg text-lg hover:bg-yellow-500 transition hover-animate animate-bounce"
            data-aos="fade-up" aria-label="Support Us">
@@ -514,12 +500,6 @@
   </div>
   <button id="chatbotToggle" aria-label="Open Chatbot"><i class="fas fa-comments"></i></button>
   
-  <!-- Cookie Consent Banner -->
-  <div id="cookieConsent">
-    <span>We use cookies to ensure you get the best experience on our website.</span>
-    <button id="cookieConsentBtn" class="bg-teal-500 text-white px-4 py-2 rounded-lg">Got it</button>
-  </div>
-  
   <!-- Scripts -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
   <script>
@@ -639,15 +619,6 @@
           link.classList.add('active');
         }
       });
-    });
-  </script>
-  
-  <!-- Cookie Consent Script -->
-  <script>
-    const cookieConsent = document.getElementById('cookieConsent');
-    const cookieConsentBtn = document.getElementById('cookieConsentBtn');
-    cookieConsentBtn.addEventListener('click', () => {
-      cookieConsent.style.display = 'none';
     });
   </script>
 </body>
