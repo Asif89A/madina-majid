@@ -31,7 +31,6 @@
     h1, h2, h3, .masjid-title {
       font-family: 'Playfair Display', serif;
     }
-
     /* Global Background Modes */
     body.bg-dark {
       background: var(--dark-bg);
@@ -41,12 +40,9 @@
       background: var(--light-bg);
       color: var(--dark-bg);
     }
-
     /* ----------------------- */
     /* HEADER & NAVIGATION     */
     /* ----------------------- */
-
-    /* Header starts transparent and changes on scroll */
     header {
       position: fixed;
       top: 0;
@@ -128,7 +124,6 @@
         margin-top: 0.5rem;
       }
     }
-
     /* ----------------------- */
     /* HERO SECTION            */
     /* ----------------------- */
@@ -168,7 +163,6 @@
       50% { background-position: 100% 50%; }
       100% { background-position: 0% 50%; }
     }
-
     /* ----------------------- */
     /* SECTIONS & COMPONENTS   */
     /* ----------------------- */
@@ -212,7 +206,6 @@
     .btn-secondary:hover {
       background: var(--primary-color);
     }
-
     /* ----------------------- */
     /* BACK TO TOP BUTTON      */
     /* ----------------------- */
@@ -233,7 +226,6 @@
     #backToTop:hover {
       background: #0d9488;
     }
-
     /* ----------------------- */
     /* RIPPLE EFFECT           */
     /* ----------------------- */
@@ -251,7 +243,6 @@
     @keyframes rippleAnim {
       to { transform: scale(4); opacity: 0; }
     }
-
     /* ----------------------- */
     /* CHATBOT STYLES          */
     /* ----------------------- */
@@ -490,6 +481,7 @@
   <!-- SCRIPTS -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
   <script>
+    // Initialize AOS animations
     AOS.init();
 
     /* Mobile Navigation Toggle */
