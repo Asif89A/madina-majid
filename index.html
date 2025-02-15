@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <!-- Set browser header color (only a single color is supported) -->
+  <!-- Set browser header color -->
   <meta name="theme-color" content="#14b8a6" />
   <title>Madina Masjid Purandawade</title>
   <!-- Tailwind CSS -->
@@ -26,26 +26,34 @@
     body { font-family: 'Inter', sans-serif; }
     h1, h2, h3, .masjid-title { font-family: 'Playfair Display', serif; }
 
-    /* Dark/Light Mode */
-    body.light { background-color: var(--light-bg); color: var(--dark-bg); }
-    body.light nav { background: linear-gradient(90deg, #fde047, #facc15); }
+    /* Global Styles */
+    body.bg-dark { background: var(--dark-bg); color: #f3f4f6; }
+    body.bg-light { background: var(--light-bg); color: var(--dark-bg); }
 
-    /* Navigation */
-    nav {
+    /* Improved Header */
+    header {
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
-      backdrop-filter: blur(10px);
       z-index: 1000;
-      transition: all 0.3s ease;
+      transition: background 0.3s ease, box-shadow 0.3s ease;
     }
-    nav .container {
+    /* Start header transparent */
+    header.transparent {
+      background: transparent;
+    }
+    /* When scrolled add a solid background and shadow */
+    header.scrolled {
+      background: var(--primary-color);
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    }
+    nav {
       max-width: 1200px;
       margin: auto;
       display: flex;
-      justify-content: space-between;
       align-items: center;
+      justify-content: space-between;
       padding: 1rem 1.5rem;
     }
     .header-title {
@@ -55,7 +63,7 @@
     }
     .header-title i {
       color: var(--accent-color);
-      font-size: 1.75rem;
+      font-size: 2rem;
       animation: pulseIcon 2s infinite;
     }
     @keyframes pulseIcon {
@@ -64,35 +72,33 @@
     }
     .header-title span {
       color: #fff;
-      font-size: 1.5rem;
+      font-size: 1.75rem;
       font-weight: 700;
       text-transform: uppercase;
-      letter-spacing: 2px;
+      letter-spacing: 1px;
     }
-    nav ul {
+    .nav-links {
       display: flex;
       gap: 1.5rem;
     }
-    nav a {
+    .nav-links a {
       color: #fff;
       font-weight: 500;
       transition: color 0.3s;
     }
-    nav a:hover { color: var(--accent-color); }
-    nav a.active { border-bottom: 2px solid var(--accent-color); }
-    /* Mobile Navigation */
+    .nav-links a:hover { color: var(--accent-color); }
+    /* Mobile Menu Button */
     #navToggle { display: none; }
     @media (max-width: 768px) {
       #navToggle { display: block; }
-      #navMenu { display: none; }
-      #navMenu.active {
-        display: block;
-        background: rgba(20, 184, 166, 0.9);
-        padding: 1rem;
-        border-radius: 8px;
-        margin-top: 0.5rem;
+      .nav-links { display: none; }
+      #mobileMenu {
+        display: none;
+        background: var(--primary-color);
       }
-      nav ul { flex-direction: column; gap: 1rem; }
+      #mobileMenu.active { display: block; }
+      #mobileMenu ul { padding: 0.5rem 1.5rem; }
+      #mobileMenu li + li { margin-top: 0.5rem; }
     }
 
     /* Hero Section */
@@ -140,21 +146,21 @@
       color: var(--accent-color);
       margin-bottom: 1rem;
     }
-
-    /* Cards and Buttons */
+    
+    /* Cards & Buttons */
     .card {
       background: #2d3748;
       padding: 1.5rem;
       border-radius: 0.75rem;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+      box-shadow: 0 4px 6px rgba(0,0,0,0.2);
       transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
-    .card:hover { transform: translateY(-5px); box-shadow: 0 8px 12px rgba(0, 0, 0, 0.3); }
+    .card:hover { transform: translateY(-5px); box-shadow: 0 8px 12px rgba(0,0,0,0.3); }
     .btn {
       display: inline-block;
       padding: 0.75rem 1.5rem;
       border-radius: 9999px;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      transition: transform 0.3s ease;
     }
     .btn-primary {
       background: var(--accent-color);
@@ -250,38 +256,50 @@
     }
   </style>
 </head>
-<body class="bg-gradient-to-br from-blue-900 via-gray-900 to-gray-800 text-gray-200">
+<body class="bg-dark">
   <!-- GitHub Ribbon -->
   <a href="https://github.com/yourgithubrepo" target="_blank" class="absolute top-0 right-0">
     <img src="https://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png" alt="Fork me on GitHub">
   </a>
   
-  <!-- Navigation -->
-  <header>
-    <nav class="bg-gradient-to-r from-teal-600 to-green-700">
-      <div class="container">
-        <div class="header-title masjid-title">
-          <i class="fas fa-gem"></i>
-          <span>Madina Masjid Purandawade</span>
-        </div>
+  <!-- Improved Header -->
+  <header id="mainHeader" class="transparent">
+    <nav>
+      <div class="header-title masjid-title">
+        <i class="fas fa-gem"></i>
+        <span>Madina Masjid Purandawade</span>
+      </div>
+      <div class="nav-links hidden md:flex">
+        <a href="#hero" aria-label="Home">Home</a>
+        <a href="#teachings" aria-label="Teachings">Teachings</a>
+        <a href="#prayer-timings" aria-label="Prayer Timings">Timings</a>
+        <a href="#donate" aria-label="Donate">Donate</a>
+        <a href="#contact" aria-label="Contact">Contact</a>
+        <a href="#faq" aria-label="FAQ">FAQ</a>
+      </div>
+      <div class="flex items-center space-x-4">
+        <button id="modeToggle" class="text-white focus:outline-none">
+          <i class="fas fa-sun"></i>
+        </button>
         <button id="navToggle" class="md:hidden text-white focus:outline-none">
           <i class="fas fa-bars"></i>
         </button>
-        <ul id="navMenu" class="hidden md:flex gap-6">
-          <li><a href="#hero" aria-label="Home">Home</a></li>
-          <li><a href="#teachings" aria-label="Teachings">Teachings</a></li>
-          <li><a href="#prayer-timings" aria-label="Prayer Timings">Timings</a></li>
-          <li><a href="#donate" aria-label="Donate">Donate</a></li>
-          <li><a href="#contact" aria-label="Contact">Contact</a></li>
-          <li><a href="#faq" aria-label="FAQ">FAQ</a></li>
-        </ul>
-        <button id="modeToggle" class="ml-4 focus:outline-none text-white">
-          <i class="fas fa-sun"></i>
-        </button>
       </div>
     </nav>
+    <!-- Mobile Navigation Menu -->
+    <div id="mobileMenu" class="md:hidden">
+      <ul>
+        <li><a href="#hero" class="block text-white py-2 px-4">Home</a></li>
+        <li><a href="#teachings" class="block text-white py-2 px-4">Teachings</a></li>
+        <li><a href="#prayer-timings" class="block text-white py-2 px-4">Timings</a></li>
+        <li><a href="#donate" class="block text-white py-2 px-4">Donate</a></li>
+        <li><a href="#contact" class="block text-white py-2 px-4">Contact</a></li>
+        <li><a href="#faq" class="block text-white py-2 px-4">FAQ</a></li>
+      </ul>
+    </div>
   </header>
-  <div class="h-20"></div>
+  <!-- Spacer for Fixed Header -->
+  <div class="h-24"></div>
   
   <!-- Main Content -->
   <main>
@@ -324,13 +342,13 @@
       </ul>
     </section>
     
-    <!-- Prayer Timings -->
+    <!-- Prayer Timings Section -->
     <section id="prayer-timings" class="text-center" data-aos="fade-up">
       <h2 class="section-title">Prayer Timings</h2>
       <div id="timing-cards" class="grid grid-cols-2 md:grid-cols-5 gap-4 mt-6"></div>
     </section>
     
-    <!-- Islamic Quotes -->
+    <!-- Islamic Quotes Section -->
     <section class="text-center bg-gray-800 py-12" data-aos="fade-up">
       <h2 class="section-title" data-aos="fade-up">Islamic Quotes</h2>
       <p id="islamic-quote" class="italic text-lg mt-4" data-aos="fade-in">
@@ -416,25 +434,37 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
   <script>
     AOS.init();
-    
+
     // Mobile Navigation Toggle
     const navToggle = document.getElementById('navToggle');
-    const navMenu = document.getElementById('navMenu');
+    const mobileMenu = document.getElementById('mobileMenu');
     navToggle.addEventListener('click', () => {
-      navMenu.classList.toggle('active');
+      mobileMenu.classList.toggle('active');
     });
     
-    // Populate Prayer Timings
+    // Header Background Change on Scroll
+    const header = document.getElementById('mainHeader');
+    window.addEventListener('scroll', () => {
+      if(window.scrollY > 50) {
+        header.classList.remove('transparent');
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+        header.classList.add('transparent');
+      }
+    });
+    
+    // Populate Prayer Timings Cards
     const timingsHTML = `
-      <div class="card premium-prayer" data-aos="fade-up" data-aos-delay="100">Fajr: 5:30 AM</div>
-      <div class="card premium-prayer" data-aos="fade-up" data-aos-delay="200">Dhuhr: 12:45 PM</div>
-      <div class="card premium-prayer" data-aos="fade-up" data-aos-delay="300">Asr: 4:30 PM</div>
-      <div class="card premium-prayer" data-aos="fade-up" data-aos-delay="400">Maghrib: 6:45 PM</div>
-      <div class="card premium-prayer" data-aos="fade-up" data-aos-delay="500">Isha: 8:00 PM</div>
+      <div class="card" data-aos="fade-up" data-aos-delay="100">Fajr: 5:30 AM</div>
+      <div class="card" data-aos="fade-up" data-aos-delay="200">Dhuhr: 12:45 PM</div>
+      <div class="card" data-aos="fade-up" data-aos-delay="300">Asr: 4:30 PM</div>
+      <div class="card" data-aos="fade-up" data-aos-delay="400">Maghrib: 6:45 PM</div>
+      <div class="card" data-aos="fade-up" data-aos-delay="500">Isha: 8:00 PM</div>
     `;
     document.getElementById("timing-cards").innerHTML = timingsHTML;
     
-    // Ripple Effect
+    // Ripple Effect for Elements with .ripple
     document.querySelectorAll('.ripple').forEach(element => {
       element.addEventListener('click', function(e) {
         const circle = document.createElement('span');
@@ -452,8 +482,9 @@
     // Dark/Light Mode Toggle
     const modeToggle = document.getElementById('modeToggle');
     modeToggle.addEventListener('click', () => {
-      document.body.classList.toggle('light');
-      modeToggle.innerHTML = document.body.classList.contains('light')
+      document.body.classList.toggle('bg-light');
+      document.body.classList.toggle('bg-dark');
+      modeToggle.innerHTML = document.body.classList.contains('bg-light')
         ? '<i class="fas fa-moon"></i>'
         : '<i class="fas fa-sun"></i>';
     });
@@ -478,12 +509,10 @@
       chatbot.style.display = 'block';
       chatbotToggle.style.display = 'none';
     });
-    
     chatbotClose.addEventListener('click', () => {
       chatbot.style.display = 'none';
       chatbotToggle.style.display = 'block';
     });
-    
     chatbotInput.addEventListener('keypress', (e) => {
       if (e.key === 'Enter' && chatbotInput.value.trim() !== '') {
         const userMsg = document.createElement('p');
@@ -502,7 +531,7 @@
     
     // Scroll Spy for Navigation
     const sections = document.querySelectorAll('main section');
-    const navLinks = document.querySelectorAll('nav a');
+    const navLinks = document.querySelectorAll('.nav-links a');
     window.addEventListener('scroll', () => {
       let currentSection = '';
       sections.forEach(section => {
