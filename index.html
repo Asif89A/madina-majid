@@ -2,7 +2,6 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <!-- Use a mobile-friendly viewport -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <!-- Set browser header color -->
   <meta name="theme-color" content="#14b8a6" />
@@ -25,8 +24,6 @@
     }
     html {
       scroll-behavior: smooth;
-      /* Optimize touch behavior for mobile */
-      touch-action: manipulation;
     }
     body {
       font-family: 'Inter', sans-serif;
@@ -166,12 +163,6 @@
       50% { background-position: 100% 50%; }
       100% { background-position: 0% 50%; }
     }
-    /* Adjust hero height for mobile devices */
-    @media (max-width: 768px) {
-      .hero {
-        height: 70vh;
-      }
-    }
     /* ----------------------- */
     /* SECTIONS & COMPONENTS   */
     /* ----------------------- */
@@ -200,7 +191,6 @@
       padding: 0.75rem 1.5rem;
       border-radius: 9999px;
       transition: transform 0.3s ease;
-      cursor: pointer;
     }
     .btn-primary {
       background: var(--accent-color);
@@ -491,10 +481,8 @@
   <!-- SCRIPTS -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
   <script>
-    // Initialize AOS animations; disable them on devices with width less than 768px.
-    AOS.init({
-      disable: window.innerWidth < 768
-    });
+    // Initialize AOS animations
+    AOS.init();
 
     /* Mobile Navigation Toggle */
     const navToggle = document.getElementById('navToggle');
