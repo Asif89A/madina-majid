@@ -40,6 +40,7 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
+      padding: 0 1rem;
     }
     /* Header Title with Premium Icon */
     .header-title {
@@ -78,8 +79,14 @@
     @media (max-width: 767px) {
       #navToggle { display: block; }
       #navMenu { display: none; }
-      #navMenu.active { display: block; }
-      nav ul { flex-direction: column; gap: 1rem; margin-top: 0.5rem; }
+      #navMenu.active {
+        display: block;
+        background: rgba(20, 184, 166, 0.9);
+        padding: 1rem;
+        border-radius: 8px;
+        margin-top: 0.5rem;
+      }
+      nav ul { flex-direction: column; gap: 1rem; }
     }
     
     /* Hero Section */
@@ -232,6 +239,78 @@
       z-index: 1001;
     }
     #backToTop:hover { background: #0d9488; }
+    
+    /* Fake AI Chatbot Styles */
+    #chatbot {
+      position: fixed;
+      bottom: 80px;
+      right: 20px;
+      width: 300px;
+      max-width: 90%;
+      background: #fff;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+      display: none;
+      z-index: 1002;
+    }
+    #chatbot .chatbot-header {
+      background: #14b8a6;
+      color: #fff;
+      padding: 0.75rem 1rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-weight: bold;
+    }
+    #chatbot .chatbot-header button {
+      background: transparent;
+      border: none;
+      color: #fff;
+      cursor: pointer;
+    }
+    #chatbot .chatbot-messages {
+      padding: 1rem;
+      background: #f9f9f9;
+      height: 250px;
+      overflow-y: auto;
+      color: #333;
+    }
+    #chatbot .chatbot-input {
+      padding: 0.75rem 1rem;
+      background: #fff;
+      border-top: 1px solid #ddd;
+    }
+    #chatbot .chatbot-input input {
+      width: 100%;
+      padding: 0.5rem;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+    }
+    #chatbotToggle {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: #14b8a6;
+      color: #fff;
+      border: none;
+      padding: 0.75rem;
+      border-radius: 50%;
+      cursor: pointer;
+      z-index: 1002;
+    }
+    
+    /* Additional Mobile Optimizations */
+    @media (max-width: 640px) {
+      .header-title span { font-size: 1.25rem; }
+      .header-title i { font-size: 1.5rem; }
+      .masjid-title { font-size: 2rem; }
+      .hero h1 { font-size: 2.5rem; }
+      .hero p { font-size: 1rem; }
+      section { padding: 3rem 0.5rem; }
+      #chatbot { width: 95%; right: 2.5%; bottom: 90px; }
+      #navMenu.active { width: 100%; }
+    }
   </style>
 </head>
 <body class="bg-gradient-to-br from-blue-900 via-gray-900 to-gray-800 text-gray-200">
@@ -345,6 +424,21 @@
   <!-- Back to Top Button -->
   <div id="backToTop"><i class="fas fa-arrow-up"></i></div>
 
+  <!-- Fake AI Chatbot -->
+  <div id="chatbot">
+    <div class="chatbot-header">
+      <span>AI Chatbot</span>
+      <button id="chatbotClose" aria-label="Close Chatbot"><i class="fas fa-times"></i></button>
+    </div>
+    <div id="chatbotMessages" class="chatbot-messages">
+      <p><strong>AI:</strong> Hello, I'm your virtual assistant. How can I help you?</p>
+    </div>
+    <div class="chatbot-input">
+      <input type="text" id="chatbotInput" placeholder="Type your message here..." aria-label="Chatbot input">
+    </div>
+  </div>
+  <button id="chatbotToggle" aria-label="Open Chatbot"><i class="fas fa-comments"></i></button>
+
   <!-- Scripts -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
   <script>
@@ -405,6 +499,42 @@
     });
     backToTop.addEventListener('click', () => {
       window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  </script>
+  
+  <!-- Fake AI Chatbot Script -->
+  <script>
+    const chatbotToggle = document.getElementById('chatbotToggle');
+    const chatbot = document.getElementById('chatbot');
+    const chatbotClose = document.getElementById('chatbotClose');
+    const chatbotInput = document.getElementById('chatbotInput');
+    const chatbotMessages = document.getElementById('chatbotMessages');
+
+    chatbotToggle.addEventListener('click', () => {
+      chatbot.style.display = 'block';
+      chatbotToggle.style.display = 'none';
+    });
+
+    chatbotClose.addEventListener('click', () => {
+      chatbot.style.display = 'none';
+      chatbotToggle.style.display = 'block';
+    });
+
+    chatbotInput.addEventListener('keypress', (e) => {
+      if (e.key === 'Enter' && chatbotInput.value.trim() !== '') {
+        const userMsg = document.createElement('p');
+        userMsg.innerHTML = '<strong>You:</strong> ' + chatbotInput.value;
+        chatbotMessages.appendChild(userMsg);
+        chatbotInput.value = '';
+        // Fake AI response after a short delay
+        setTimeout(() => {
+          const botMsg = document.createElement('p');
+          botMsg.innerHTML = '<strong>AI:</strong> I am a fake AI chatbot. How can I assist you further?';
+          chatbotMessages.appendChild(botMsg);
+          chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+        }, 1000);
+        chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+      }
     });
   </script>
 </body>
