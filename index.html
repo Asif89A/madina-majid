@@ -22,6 +22,15 @@
     body { font-family: 'Source Sans Pro', sans-serif; }
     h1, h2, h3, .masjid-title { font-family: 'Playfair Display', serif; }
     
+    /* Dark/Light Mode Styles */
+    body.light {
+      background: #ffffff;
+      color: #1f2937;
+    }
+    body.light nav {
+      background: linear-gradient(to right, #fde047, #facc15);
+    }
+    
     /* Fixed Navigation Bar */
     nav {
       position: fixed;
@@ -40,6 +49,7 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
+      padding: 0 1rem;
     }
     /* Header Title with Premium Icon */
     .header-title {
@@ -73,13 +83,24 @@
       transition: color 0.3s;
     }
     nav a:hover { color: #fde047; }
+    /* Active link style for scroll spy */
+    nav a.active {
+      border-bottom: 2px solid #fde047;
+    }
+    
     /* Mobile Navigation */
     #navToggle { display: none; }
     @media (max-width: 767px) {
       #navToggle { display: block; }
       #navMenu { display: none; }
-      #navMenu.active { display: block; }
-      nav ul { flex-direction: column; gap: 1rem; margin-top: 0.5rem; }
+      #navMenu.active {
+        display: block;
+        background: rgba(20, 184, 166, 0.9);
+        padding: 1rem;
+        border-radius: 8px;
+        margin-top: 0.5rem;
+      }
+      nav ul { flex-direction: column; gap: 1rem; }
     }
     
     /* Hero Section */
@@ -232,9 +253,86 @@
       z-index: 1001;
     }
     #backToTop:hover { background: #0d9488; }
+    
+    /* Fake AI Chatbot Styles */
+    #chatbot {
+      position: fixed;
+      bottom: 80px;
+      right: 20px;
+      width: 300px;
+      max-width: 90%;
+      background: #fff;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+      display: none;
+      z-index: 1002;
+    }
+    #chatbot .chatbot-header {
+      background: #14b8a6;
+      color: #fff;
+      padding: 0.75rem 1rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-weight: bold;
+    }
+    #chatbot .chatbot-header button {
+      background: transparent;
+      border: none;
+      color: #fff;
+      cursor: pointer;
+    }
+    #chatbot .chatbot-messages {
+      padding: 1rem;
+      background: #f9f9f9;
+      height: 250px;
+      overflow-y: auto;
+      color: #333;
+    }
+    #chatbot .chatbot-input {
+      padding: 0.75rem 1rem;
+      background: #fff;
+      border-top: 1px solid #ddd;
+    }
+    #chatbot .chatbot-input input {
+      width: 100%;
+      padding: 0.5rem;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+    }
+    #chatbotToggle {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: #14b8a6;
+      color: #fff;
+      border: none;
+      padding: 0.75rem;
+      border-radius: 50%;
+      cursor: pointer;
+      z-index: 1002;
+    }
+    
+    /* Additional Mobile Optimizations */
+    @media (max-width: 640px) {
+      .header-title span { font-size: 1.25rem; }
+      .header-title i { font-size: 1.5rem; }
+      .masjid-title { font-size: 2rem; }
+      .hero h1 { font-size: 2.5rem; }
+      .hero p { font-size: 1rem; }
+      section { padding: 3rem 0.5rem; }
+      #chatbot { width: 95%; right: 2.5%; bottom: 90px; }
+      #navMenu.active { width: 100%; }
+    }
   </style>
 </head>
 <body class="bg-gradient-to-br from-blue-900 via-gray-900 to-gray-800 text-gray-200">
+  <!-- GitHub Ribbon -->
+  <a href="https://github.com/yourgithubrepo" target="_blank">
+    <img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png" alt="Fork me on GitHub">
+  </a>
+  
   <!-- Fixed Navigation Bar -->
   <header>
     <nav>
@@ -251,6 +349,8 @@
           <li><a href="#teachings" aria-label="Teachings">Teachings</a></li>
           <li><a href="#prayer-timings" aria-label="Prayer Timings">Timings</a></li>
           <li><a href="#donate" aria-label="Donate">Donate</a></li>
+          <li><a href="#contact" aria-label="Contact">Contact</a></li>
+          <li><a href="#faq" aria-label="FAQ">FAQ</a></li>
         </ul>
         <!-- Dark/Light Mode Toggle -->
         <button id="modeToggle" class="ml-4 focus:outline-none">
@@ -259,10 +359,10 @@
       </div>
     </nav>
   </header>
-
+  
   <!-- Spacer for Navigation -->
   <div class="h-16"></div>
-
+  
   <!-- Main Content -->
   <main>
     <!-- Hero Section -->
@@ -271,15 +371,15 @@
       <div class="relative z-10 text-center" data-aos="zoom-in">
         <h1 class="text-6xl font-bold animate-fade-in gradient-text">Welcome to Madina Masjid Purandawade</h1>
         <p class="mt-4 text-xl">A place of peace, prayer, and unity.</p>
-        <!-- "Support Us" button with an id for JS scrolling fix -->
-        <a id="supportUsLink" href="#donate" 
+        <!-- "Support Us" now scrolls to the Donate section -->
+        <a href="#donate"   
            class="ripple mt-6 inline-block bg-yellow-400 text-gray-900 px-6 py-3 rounded-lg text-lg hover:bg-yellow-500 transition hover-animate animate-bounce"
            data-aos="fade-up" aria-label="Support Us">
            Support Us
         </a>
       </div>
     </section>
-
+    
     <!-- Islamic Teachings & Knowledge -->
     <section id="teachings" class="text-center" data-aos="fade-up">
       <h2 class="text-3xl font-semibold text-teal-400 animate-slide-in-left">Islamic Teachings &amp; Knowledge</h2>
@@ -308,13 +408,13 @@
         </li>
       </ul>
     </section>
-
+    
     <!-- Prayer Timings -->
     <section id="prayer-timings" class="text-center" data-aos="fade-up">
       <h2 class="text-3xl font-semibold text-teal-400 animate-slide-in-left">Prayer Timings</h2>
       <div class="grid grid-cols-2 md:grid-cols-5 gap-4 mt-4 text-lg" id="timing-cards"></div>
     </section>
-
+    
     <!-- Islamic Quotes -->
     <section class="text-center bg-gray-800" data-aos="fade-up">
       <h2 class="text-3xl font-semibold text-teal-400 animate-slide-in-right">Islamic Quotes</h2>
@@ -322,43 +422,97 @@
         “And He found you lost and guided [you].” - (Quran 93:7)
       </p>
     </section>
-
+    
     <!-- Donate Section -->
     <section id="donate" class="text-center bg-gray-900 shadow-lg" data-aos="flip-up" data-aos-delay="300">
       <h2 class="text-3xl font-semibold text-yellow-400 animate-slide-in-right">Donate to the Masjid</h2>
       <p class="mt-3">Support us via UPI:</p>
       <div class="flex justify-center mt-4">
-        <a href="upi://pay?pa=dr.89@ibl&pn=Madina%20Masjid&mc=0000&mode=02&purpose=00" 
+        <a href="upi://pay?pa=dr.89@ibl&pn=Madina%20Masjid&mc=0000&mode=02&purpose=00"
            class="ripple donate-button bg-green-500 text-gray-900 px-6 py-3 rounded-lg text-lg hover:bg-green-600 transition hover-animate animate-bounce"
            aria-label="Donate via UPI">
            Donate via UPI
         </a>
       </div>
     </section>
+    
+    <!-- Contact Us Section -->
+    <section id="contact" class="text-center" data-aos="fade-up">
+      <h2 class="text-3xl font-semibold text-teal-400 animate-slide-in-left">Contact Us</h2>
+      <p class="mt-3">Have any questions or need assistance? Reach out to us!</p>
+      <form class="max-w-xl mx-auto mt-6 space-y-4">
+        <input type="text" placeholder="Your Name" class="w-full px-4 py-2 rounded-lg bg-gray-700 text-gray-200 focus:outline-none focus:ring-2 focus:ring-teal-400" required>
+        <input type="email" placeholder="Your Email" class="w-full px-4 py-2 rounded-lg bg-gray-700 text-gray-200 focus:outline-none focus:ring-2 focus:ring-teal-400" required>
+        <textarea placeholder="Your Message" rows="4" class="w-full px-4 py-2 rounded-lg bg-gray-700 text-gray-200 focus:outline-none focus:ring-2 focus:ring-teal-400" required></textarea>
+        <button type="submit" class="ripple bg-yellow-400 text-gray-900 px-6 py-3 rounded-lg text-lg hover:bg-yellow-500 transition hover-animate animate-bounce">Send Message</button>
+      </form>
+    </section>
+    
+    <!-- FAQ Section -->
+    <section id="faq" class="text-center" data-aos="fade-up">
+      <h2 class="text-3xl font-semibold text-teal-400 animate-slide-in-left">Frequently Asked Questions</h2>
+      <div class="max-w-2xl mx-auto mt-6 space-y-4">
+        <details class="bg-gray-700 p-4 rounded-lg">
+          <summary class="cursor-pointer font-semibold">What are the prayer timings?</summary>
+          <p class="mt-2 text-gray-300">The prayer timings are displayed in the Prayer Timings section. They may vary by location and season.</p>
+        </details>
+        <details class="bg-gray-700 p-4 rounded-lg">
+          <summary class="cursor-pointer font-semibold">How can I donate?</summary>
+          <p class="mt-2 text-gray-300">You can donate via the provided UPI link in the Donate section. Your contributions are greatly appreciated.</p>
+        </details>
+        <details class="bg-gray-700 p-4 rounded-lg">
+          <summary class="cursor-pointer font-semibold">How do I contact the Masjid?</summary>
+          <p class="mt-2 text-gray-300">Use the Contact Us form above to reach out to us for any inquiries or assistance.</p>
+        </details>
+      </div>
+    </section>
+    
   </main>
-
+  
   <!-- Footer -->
   <footer class="text-center p-5 bg-gradient-to-r from-teal-600 to-green-700 text-white mt-5 shadow-lg animate-fade-in" role="contentinfo">
     &copy; 2025 Madina Masjid Purandawade | 
     <a href="https://github.com/yourgithubrepo" target="_blank" class="underline">View on GitHub</a>
+    <!-- Social Media Icons -->
+    <div class="mt-3 flex justify-center space-x-4">
+      <a href="https://facebook.com" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+      <a href="https://twitter.com" target="_blank" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+      <a href="https://instagram.com" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+      <a href="https://youtube.com" target="_blank" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+    </div>
   </footer>
-
+  
   <!-- Back to Top Button -->
   <div id="backToTop"><i class="fas fa-arrow-up"></i></div>
-
+  
+  <!-- Fake AI Chatbot -->
+  <div id="chatbot">
+    <div class="chatbot-header">
+      <span>AI Chatbot</span>
+      <button id="chatbotClose" aria-label="Close Chatbot"><i class="fas fa-times"></i></button>
+    </div>
+    <div id="chatbotMessages" class="chatbot-messages">
+      <p><strong>AI:</strong> Hello, I'm your virtual assistant. How can I help you?</p>
+    </div>
+    <div class="chatbot-input">
+      <input type="text" id="chatbotInput" placeholder="Type your message here..." aria-label="Chatbot input">
+    </div>
+  </div>
+  <button id="chatbotToggle" aria-label="Open Chatbot"><i class="fas fa-comments"></i></button>
+  
   <!-- Scripts -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
   <script>
     // Initialize AOS
     AOS.init();
-
+  
     // Mobile Navigation Toggle
     const navToggle = document.getElementById('navToggle');
     const navMenu = document.getElementById('navMenu');
     navToggle.addEventListener('click', () => {
       navMenu.classList.toggle('active');
     });
-
+  
     // Populate Prayer Timings Cards with Premium Effects
     const timingsHTML = `
       <div class="prayer-card premium-prayer bg-gray-700 p-5 shadow-md rounded-lg hover-animate" data-aos="fade-up" data-aos-delay="100">Fajr: 5:30 AM</div>
@@ -367,7 +521,7 @@
       <div class="prayer-card premium-prayer bg-gray-700 p-5 shadow-md rounded-lg hover-animate" data-aos="fade-up" data-aos-delay="400">Maghrib: 6:45 PM</div>
       <div class="prayer-card premium-prayer bg-gray-700 p-5 shadow-md rounded-lg hover-animate" data-aos="fade-up" data-aos-delay="500">Isha: 8:00 PM</div>`;
     document.getElementById("timing-cards").innerHTML = timingsHTML;
-
+  
     // Ripple Effect for elements with class 'ripple'
     document.querySelectorAll('.ripple').forEach(element => {
       element.addEventListener('click', function(e) {
@@ -389,7 +543,7 @@
         }, 500);
       });
     });
-
+  
     // Dark/Light Mode Toggle
     const modeToggle = document.getElementById('modeToggle');
     modeToggle.addEventListener('click', () => {
@@ -398,7 +552,7 @@
         ? '<i class="fas fa-moon"></i>'
         : '<i class="fas fa-sun"></i>';
     });
-
+  
     // Back to Top Button Functionality
     const backToTop = document.getElementById('backToTop');
     window.addEventListener('scroll', () => {
@@ -407,12 +561,64 @@
     backToTop.addEventListener('click', () => {
       window.scrollTo({ top: 0, behavior: 'smooth' });
     });
+  </script>
+  
+  <!-- Fake AI Chatbot Script -->
+  <script>
+    const chatbotToggle = document.getElementById('chatbotToggle');
+    const chatbot = document.getElementById('chatbot');
+    const chatbotClose = document.getElementById('chatbotClose');
+    const chatbotInput = document.getElementById('chatbotInput');
+    const chatbotMessages = document.getElementById('chatbotMessages');
+  
+    chatbotToggle.addEventListener('click', () => {
+      chatbot.style.display = 'block';
+      chatbotToggle.style.display = 'none';
+    });
+  
+    chatbotClose.addEventListener('click', () => {
+      chatbot.style.display = 'none';
+      chatbotToggle.style.display = 'block';
+    });
+  
+    chatbotInput.addEventListener('keypress', (e) => {
+      if (e.key === 'Enter' && chatbotInput.value.trim() !== '') {
+        const userMsg = document.createElement('p');
+        userMsg.innerHTML = '<strong>You:</strong> ' + chatbotInput.value;
+        chatbotMessages.appendChild(userMsg);
+        chatbotInput.value = '';
+        // Fake AI response after a short delay
+        setTimeout(() => {
+          const botMsg = document.createElement('p');
+          botMsg.innerHTML = '<strong>AI:</strong> I am a fake AI chatbot. How can I assist you further?';
+          chatbotMessages.appendChild(botMsg);
+          chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+        }, 1000);
+        chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+      }
+    });
+  </script>
+  
+  <!-- Scroll Spy for Navigation -->
+  <script>
+    const sections = document.querySelectorAll('main section');
+    const navLinks = document.querySelectorAll('nav a');
 
-    // Ensure "Support Us" smoothly scrolls to the Donate section
-    const supportUsLink = document.getElementById("supportUsLink");
-    supportUsLink.addEventListener("click", function(e) {
-      e.preventDefault();
-      document.getElementById("donate").scrollIntoView({ behavior: "smooth", block: "start" });
+    window.addEventListener('scroll', () => {
+      let currentSection = '';
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop - 100;
+        if (pageYOffset >= sectionTop) {
+          currentSection = section.getAttribute('id');
+        }
+      });
+
+      navLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href').substring(1) === currentSection) {
+          link.classList.add('active');
+        }
+      });
     });
   </script>
 </body>
