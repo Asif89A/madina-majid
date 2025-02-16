@@ -15,24 +15,6 @@
   <!-- Google Fonts: Playfair Display for headings, Source Sans Pro for body -->
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Source+Sans+Pro:wght@300;400;600;700&display=swap" rel="stylesheet">
   <style>
-    /* Live Islamic Video Background */
-    #bgVideo {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      z-index: -2;
-    }
-    /* Dark Overlay for Readability */
-    .overlay {
-      position: fixed;
-      inset: 0;
-      background: rgba(0, 0, 0, 0.6);
-      z-index: -1;
-    }
-
     /* Smooth Scroll */
     html { scroll-behavior: smooth; }
     
@@ -107,16 +89,24 @@
       nav ul { flex-direction: column; gap: 1rem; }
     }
     
-    /* Hero Section (now using the live video background) */
+    /* Hero Section */
     .hero {
+      background: url('https://source.unsplash.com/1600x900/?mosque,prayer') no-repeat center center/cover;
       height: 80vh;
       display: flex;
-      flex-direction: column;
       justify-content: center;
       align-items: center;
       position: relative;
-      z-index: 1;
-      text-align: center;
+      animation: fadeIn 2s ease-in-out;
+    }
+    .overlay {
+      background: rgba(0, 0, 0, 0.6);
+      position: absolute;
+      inset: 0;
+    }
+    @keyframes fadeIn {
+      0% { opacity: 0; transform: scale(0.9); }
+      100% { opacity: 1; transform: scale(1); }
     }
     .gradient-text {
       background: linear-gradient(90deg, #fde047, #facc15);
@@ -366,15 +356,6 @@
   </style>
 </head>
 <body class="bg-gradient-to-br from-blue-900 via-gray-900 to-gray-800 text-gray-200">
-  <!-- Live Islamic Video Background -->
-  <video autoplay muted loop id="bgVideo">
-    <!-- Replace the source URL below with your preferred Islamic video -->
-    <source src="YOUR_ISLAMIC_VIDEO_URL.mp4" type="video/mp4">
-    Your browser does not support the video tag.
-  </video>
-  <!-- Dark Overlay -->
-  <div class="overlay"></div>
-
   <!-- Fixed Navigation Bar -->
   <header>
     <nav>
@@ -406,7 +387,8 @@
   <!-- Main Content -->
   <main>
     <!-- Hero Section -->
-    <section id="hero" class="hero relative" role="banner">
+    <section id="hero" class="hero relative parallax" role="banner">
+      <div class="overlay"></div>
       <div class="relative z-10 text-center" data-aos="zoom-in">
         <h1 class="text-6xl font-bold animate-fade-in gradient-text">Welcome to Madina Masjid Purandawade</h1>
         <p class="mt-4 text-xl">A place of peace, prayer, and unity.</p>
