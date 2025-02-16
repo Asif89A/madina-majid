@@ -10,10 +10,13 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <!-- AOS Animation Library -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />
-  <!-- FontAwesome -->
+  <!-- FontAwesome (for icons like bars, times, sun, arrow-up) -->
   <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
   <!-- Google Fonts: Playfair Display for headings, Source Sans Pro for body -->
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Source+Sans+Pro:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Source+Sans+Pro:wght@300;400;600;700&display=swap"
+    rel="stylesheet"
+  >
   <style>
     /* Smooth Scroll */
     html { scroll-behavior: smooth; }
@@ -275,9 +278,6 @@
       align-items: center;
       gap: 0.5rem;
     }
-    #chatbot .chatbot-header .chatbot-title i {
-      font-size: 1.5rem;
-    }
     #chatbot .chatbot-messages {
       padding: 1rem;
       background: #f9f9f9;
@@ -336,7 +336,7 @@
       border-color: #14b8a6;
     }
     
-    /* Chatbot Toggle Button (already defined earlier) */
+    /* Chatbot Toggle Button */
     .chatbot-toggle {
       position: fixed;
       bottom: 20px;
@@ -357,6 +357,21 @@
     .chatbot-toggle:hover {
       transform: scale(1.1);
       box-shadow: 0 0 15px rgba(20, 184, 166, 0.7);
+    }
+    
+    @keyframes pulse {
+      0% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(20, 184, 166, 0.7);
+      }
+      70% {
+        transform: scale(1.05);
+        box-shadow: 0 0 0 10px rgba(20, 184, 166, 0);
+      }
+      100% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(20, 184, 166, 0);
+      }
     }
     
     /* Additional Mobile Optimizations */
@@ -449,77 +464,110 @@
     <section id="hero" class="hero relative parallax" role="banner">
       <div class="overlay"></div>
       <div class="relative z-10 text-center" data-aos="zoom-in">
-        <h1 class="text-6xl font-bold animate-fade-in gradient-text">Welcome to Madina Masjid Purandawade</h1>
+        <h1 class="text-6xl font-bold animate-fade-in gradient-text">
+          Welcome to Madina Masjid Purandawade
+        </h1>
         <p class="mt-4 text-xl">A place of peace, prayer, and unity.</p>
-        <a href="#donate" 
-           class="ripple mt-6 inline-block bg-yellow-400 text-gray-900 px-6 py-3 rounded-lg text-lg hover:bg-yellow-500 transition hover-animate animate-bounce"
-           data-aos="fade-up" aria-label="Support Us">
-           Support Us
+        <a
+          href="#donate"
+          class="ripple mt-6 inline-block bg-yellow-400 text-gray-900 px-6 py-3 rounded-lg text-lg hover:bg-yellow-500 transition hover-animate animate-bounce"
+          data-aos="fade-up"
+          aria-label="Support Us"
+        >
+          Support Us
         </a>
       </div>
     </section>
 
     <!-- Islamic Teachings & Knowledge -->
     <section id="teachings" class="text-center" data-aos="fade-up">
-      <h2 class="text-3xl font-semibold text-teal-400 animate-slide-in-left">Islamic Teachings &amp; Knowledge</h2>
+      <h2 class="text-3xl font-semibold text-teal-400 animate-slide-in-left">
+        Islamic Teachings &amp; Knowledge
+      </h2>
       <p class="mt-3 italic text-lg animate-slide-in-right">
         “Indeed, prayer prohibits immorality and wrongdoing, and the remembrance of Allah is greater.” - (Quran 29:45)
       </p>
-      <p class="mt-3">Learn about the teachings of Islam, the importance of Salah, and the significance of community and charity.</p>
+      <p class="mt-3">
+        Learn about the teachings of Islam, the importance of Salah, and the significance of community and charity.
+      </p>
       <ul class="mt-5 space-y-3 text-lg">
         <li class="animate-fade-up" style="animation-delay: 100ms;">
-          <span class="emoji">📖</span> <strong>The Five Pillars of Islam:</strong> Shahada, Salah, Zakat, Sawm, and Hajj.
+          <span class="emoji">📖</span>
+          <strong>The Five Pillars of Islam:</strong> Shahada, Salah, Zakat, Sawm, and Hajj.
         </li>
         <li class="animate-fade-up" style="animation-delay: 200ms;">
-          <span class="emoji">🕌</span> <strong>The Importance of Salah:</strong> Daily prayers keep the heart connected to Allah.
+          <span class="emoji">🕌</span>
+          <strong>The Importance of Salah:</strong> Daily prayers keep the heart connected to Allah.
         </li>
         <li class="animate-fade-up" style="animation-delay: 300ms;">
-          <span class="emoji">❤️</span> <strong>Charity (Sadaqah &amp; Zakat):</strong> Helping those in need is a core Islamic value.
+          <span class="emoji">❤️</span>
+          <strong>Charity (Sadaqah &amp; Zakat):</strong> Helping those in need is a core Islamic value.
         </li>
         <li class="animate-fade-up" style="animation-delay: 400ms;">
-          <span class="emoji">📜</span> <strong>Hadith Wisdom:</strong> "The best among you are those who have the best manners and character."
+          <span class="emoji">📜</span>
+          <strong>Hadith Wisdom:</strong> "The best among you are those who have the best manners and character."
         </li>
         <li class="animate-fade-up" style="animation-delay: 500ms;">
-          <span class="emoji">🕋</span> <strong>The Quran:</strong> The final revelation and guidance for mankind.
+          <span class="emoji">🕋</span>
+          <strong>The Quran:</strong> The final revelation and guidance for mankind.
         </li>
         <li class="animate-fade-up" style="animation-delay: 600ms;">
-          <span class="emoji">🌙</span> <strong>Fasting (Sawm):</strong> A means to attain self-discipline and closeness to Allah.
+          <span class="emoji">🌙</span>
+          <strong>Fasting (Sawm):</strong> A means to attain self-discipline and closeness to Allah.
         </li>
       </ul>
     </section>
 
     <!-- Prayer Timings -->
     <section id="prayer-timings" class="text-center" data-aos="fade-up">
-      <h2 class="text-3xl font-semibold text-teal-400 animate-slide-in-left">Prayer Timings</h2>
+      <h2 class="text-3xl font-semibold text-teal-400 animate-slide-in-left">
+        Prayer Timings
+      </h2>
       <div class="grid grid-cols-2 md:grid-cols-5 gap-4 mt-4 text-lg" id="timing-cards"></div>
     </section>
 
     <!-- Islamic Quotes -->
     <section class="text-center bg-gray-800" data-aos="fade-up">
-      <h2 class="text-3xl font-semibold text-teal-400 animate-slide-in-right">Islamic Quotes</h2>
+      <h2 class="text-3xl font-semibold text-teal-400 animate-slide-in-right">
+        Islamic Quotes
+      </h2>
       <p id="islamic-quote" class="mt-3 text-lg italic animate-fade-in">
         “And He found you lost and guided [you].” - (Quran 93:7)
       </p>
     </section>
 
     <!-- Donate Section -->
-    <section id="donate" class="text-center bg-gray-900 shadow-lg" data-aos="flip-up" data-aos-delay="300">
-      <h2 class="text-3xl font-semibold text-yellow-400 animate-slide-in-right">Donate to the Masjid</h2>
+    <section
+      id="donate"
+      class="text-center bg-gray-900 shadow-lg"
+      data-aos="flip-up"
+      data-aos-delay="300"
+    >
+      <h2 class="text-3xl font-semibold text-yellow-400 animate-slide-in-right">
+        Donate to the Masjid
+      </h2>
       <p class="mt-3">Support us via UPI:</p>
       <div class="flex justify-center mt-4">
-        <a href="upi://pay?pa=dr.89@ibl&pn=Madina%20Masjid&mc=0000&mode=02&purpose=00" 
-           class="ripple donate-button bg-green-500 text-gray-900 px-6 py-3 rounded-lg text-lg hover:bg-green-600 transition hover-animate animate-bounce"
-           aria-label="Donate via UPI">
-           Donate via UPI
+        <a
+          href="upi://pay?pa=dr.89@ibl&pn=Madina%20Masjid&mc=0000&mode=02&purpose=00"
+          class="ripple donate-button bg-green-500 text-gray-900 px-6 py-3 rounded-lg text-lg hover:bg-green-600 transition hover-animate animate-bounce"
+          aria-label="Donate via UPI"
+        >
+          Donate via UPI
         </a>
       </div>
     </section>
   </main>
 
   <!-- Footer -->
-  <footer class="text-center p-5 bg-gradient-to-r from-teal-600 to-green-700 text-white mt-5 shadow-lg animate-fade-in" role="contentinfo">
-    &copy; 2025 Madina Masjid Purandawade | 
-    <a href="https://github.com/yourgithubrepo" target="_blank" class="underline">View on GitHub</a>
+  <footer
+    class="text-center p-5 bg-gradient-to-r from-teal-600 to-green-700 text-white mt-5 shadow-lg animate-fade-in"
+    role="contentinfo"
+  >
+    &copy; 2025 Madina Masjid Purandawade |
+    <a href="https://github.com/yourgithubrepo" target="_blank" class="underline">
+      View on GitHub
+    </a>
   </footer>
 
   <!-- Back to Top Button -->
@@ -529,21 +577,41 @@
   <div id="chatbot">
     <div class="chatbot-header">
       <div class="chatbot-title">
-        <i class="fas fa-robot"></i>
+        <!-- Chatbot icon embedded as Base64 -->
+        <img
+          src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAC2UlEQVQ4T42TW0xTURTFz3kUSvR9gLQd2shNCQfR2a8jTTsn/kp7SlX84p0Ei1MsbWEhEHPItLQGGkC0kbl1CNusIWrCGw4ZBK5u7erq+m91n/ZY/r8mM/M/f+fjPBhMIhGAyjsiXksq2z2k0Xc5hKQrd7GZOkKu2XnEiLRN0wi2aAl1LRz6GU2TFeSmSfD8B/fkBEbh5ITB2ExJPkZfY6nKKhWk7DztIN/Eb2I1KXyMcXWBf3Zb23Tn80n8U3b6FPEEXBgrtEgdG17C7a9du39D/6uF9v91/wynBwTe4hrAB7A3hDHlgDJV1kz8Z9DXZ7CbZhM1ZECbW7ST5m2mZ3btX8Xtt+H/PZbqL1S7CIy8IY1U4SAsnYf2BYPmC1mZP7VvQbC4hAC+Z63WR4OHUYPmZQLR/G8EZOIM9PAdh3HQ7b0K7B9mscknZ9AxTCDwZPC9Z8kyyN09OEym9m4s6aBT6XBG8ZHIz6XxN2ouRZ9e5U74yRh1Nm2CGLhmJnddZMGYHSKSC8xx+Stzix+Ya0n7NK8Exu5BoI2M7ef5nc75iAwliIf7sAq/r/6ZRG9wRXNhJ3Zk2s7/d1W6gZSTlq9RTr7t3K5g6SfSNoZ3GtW/7pceX86aF7/9kDNYBKcT6yGz7pEpVcS5whf5d95bbub3/ISZCJKTYfIrhxSWPo37nWvt1U1B8rUz7nBDEcS+p9DGh9GbLo/HgZaD1FA1ev3HXLbRPOdAxNmIJ7XIMzbYnG4Exh24EZKn5ADImB1Q+drSGQAAAABJRU5ErkJggg=="
+          alt="Chatbot Icon"
+          style="width:24px; height:24px;"
+        >
         <span>AI Chatbot</span>
       </div>
-      <button id="chatbotClose" aria-label="Close Chatbot"><i class="fas fa-times"></i></button>
+      <button id="chatbotClose" aria-label="Close Chatbot">
+        <i class="fas fa-times"></i>
+      </button>
     </div>
     <div id="chatbotMessages" class="chatbot-messages">
-      <div class="chatbot-message"><strong>AI:</strong> Hello, I'm your virtual assistant. How can I help you?</div>
+      <div class="chatbot-message">
+        <strong>AI:</strong> Hello, I'm your virtual assistant. How can I help you?
+      </div>
     </div>
     <div class="chatbot-input">
-      <input type="text" id="chatbotInput" placeholder="Type your message here..." aria-label="Chatbot input">
+      <input
+        type="text"
+        id="chatbotInput"
+        placeholder="Type your message here..."
+        aria-label="Chatbot input"
+      >
     </div>
   </div>
+
   <!-- Chatbot Toggle Button -->
   <button id="chatbotToggle" aria-label="Open Chatbot" class="chatbot-toggle">
-    <i class="fas fa-robot"></i>
+    <!-- Same Base64 icon for the toggle -->
+    <img
+      src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAC2UlEQVQ4T42TW0xTURTFz3kUSvR9gLQd2shNCQfR2a8jTTsn/kp7SlX84p0Ei1MsbWEhEHPItLQGGkC0kbl1CNusIWrCGw4ZBK5u7erq+m91n/ZY/r8mM/M/f+fjPBhMIhGAyjsiXksq2z2k0Xc5hKQrd7GZOkKu2XnEiLRN0wi2aAl1LRz6GU2TFeSmSfD8B/fkBEbh5ITB2ExJPkZfY6nKKhWk7DztIN/Eb2I1KXyMcXWBf3Zb23Tn80n8U3b6FPEEXBgrtEgdG17C7a9du39D/6uF9v91/wynBwTe4hrAB7A3hDHlgDJV1kz8Z9DXZ7CbZhM1ZECbW7ST5m2mZ3btX8Xtt+H/PZbqL1S7CIy8IY1U4SAsnYf2BYPmC1mZP7VvQbC4hAC+Z63WR4OHUYPmZQLR/G8EZOIM9PAdh3HQ7b0K7B9mscknZ9AxTCDwZPC9Z8kyyN09OEym9m4s6aBT6XBG8ZHIz6XxN2ouRZ9e5U74yRh1Nm2CGLhmJnddZMGYHSKSC8xx+Stzix+Ya0n7NK8Exu5BoI2M7ef5nc75iAwliIf7sAq/r/6ZRG9wRXNhJ3Zk2s7/d1W6gZSTlq9RTr7t3K5g6SfSNoZ3GtW/7pceX86aF7/9kDNYBKcT6yGz7pEpVcS5whf5d95bbub3/ISZCJKTYfIrhxSWPo37nWvt1U1B8rUz7nBDEcS+p9DGh9GbLo/HgZaD1FA1ev3HXLbRPOdAxNmIJ7XIMzbYnG4Exh24EZKn5ADImB1Q+drSGQAAAABJRU5ErkJggg=="
+      alt="Chatbot Icon"
+      style="width:24px; height:24px;"
+    >
   </button>
 
   <!-- Scripts -->
@@ -565,7 +633,8 @@
       <div class="prayer-card premium-prayer bg-gray-700 p-5 shadow-md rounded-lg hover-animate" data-aos="fade-up" data-aos-delay="200">Dhuhr: 12:45 PM</div>
       <div class="prayer-card premium-prayer bg-gray-700 p-5 shadow-md rounded-lg hover-animate" data-aos="fade-up" data-aos-delay="300">Asr: 4:30 PM</div>
       <div class="prayer-card premium-prayer bg-gray-700 p-5 shadow-md rounded-lg hover-animate" data-aos="fade-up" data-aos-delay="400">Maghrib: 6:45 PM</div>
-      <div class="prayer-card premium-prayer bg-gray-700 p-5 shadow-md rounded-lg hover-animate" data-aos="fade-up" data-aos-delay="500">Isha: 8:00 PM</div>`;
+      <div class="prayer-card premium-prayer bg-gray-700 p-5 shadow-md rounded-lg hover-animate" data-aos="fade-up" data-aos-delay="500">Isha: 8:00 PM</div>
+    `;
     document.getElementById("timing-cards").innerHTML = timingsHTML;
 
     // Ripple Effect for elements with class 'ripple'
@@ -581,9 +650,10 @@
         this.appendChild(circle);
         setTimeout(() => {
           circle.remove();
+          // Re-trigger bounce if present
           if (this.classList.contains("animate-bounce")) {
             this.classList.remove("animate-bounce");
-            void this.offsetWidth;
+            void this.offsetWidth; // force reflow
             this.classList.add("animate-bounce");
           }
         }, 500);
