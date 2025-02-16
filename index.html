@@ -311,6 +311,48 @@
       #chatbot { width: 95%; right: 2.5%; bottom: 90px; }
       #navMenu.active { width: 100%; }
     }
+    
+    /* ------------------------------
+       Additional Animations for
+       Islamic Teachings & Knowledge Section
+       ------------------------------ */
+    #teachings {
+      background: linear-gradient(135deg, #0f172a, #1e293b);
+      background-size: 200% 200%;
+      animation: gradientBG 15s ease infinite;
+      padding: 4rem 1rem;
+    }
+    #teachings h2:hover {
+      text-shadow: 0 0 10px #fde047;
+      transition: text-shadow 0.3s ease;
+    }
+    #teachings li:hover {
+      transform: scale(1.05);
+      color: #fde047;
+      text-shadow: 0 0 10px rgba(253, 224, 71, 0.8);
+      transition: transform 0.3s ease, color 0.3s ease, text-shadow 0.3s ease;
+    }
+    
+    /* ------------------------------
+       Dark/Light Mode Overrides
+       ------------------------------ */
+    body.light {
+      background: #f9f9f9;
+      color: #333;
+    }
+    body.light nav {
+      background: linear-gradient(to right, #facc15, #fde047);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    }
+    body.light .header-title span {
+      color: #333;
+    }
+    body.light a {
+      color: #333;
+    }
+    body.light a:hover {
+      color: #facc15;
+    }
   </style>
 </head>
 <body class="bg-gradient-to-br from-blue-900 via-gray-900 to-gray-800 text-gray-200">
