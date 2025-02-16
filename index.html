@@ -240,34 +240,43 @@
     }
     #backToTop:hover { background: #0d9488; }
     
-    /* Fake AI Chatbot Styles */
+    /* ------------------------------
+       Improved Fake AI Chatbot Styles
+       ------------------------------ */
     #chatbot {
       position: fixed;
       bottom: 80px;
       right: 20px;
-      width: 300px;
+      width: 320px;
       max-width: 90%;
-      background: #fff;
-      border-radius: 8px;
+      background: linear-gradient(to bottom right, #ffffff, #f1f1f1);
+      border-radius: 12px;
       overflow: hidden;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
       display: none;
       z-index: 1002;
+      animation: slideInUp 0.5s ease-out;
+    }
+    @keyframes slideInUp {
+      from { transform: translateY(100%); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
     }
     #chatbot .chatbot-header {
       background: #14b8a6;
       color: #fff;
-      padding: 0.75rem 1rem;
+      padding: 1rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
       font-weight: bold;
     }
-    #chatbot .chatbot-header button {
-      background: transparent;
-      border: none;
-      color: #fff;
-      cursor: pointer;
+    #chatbot .chatbot-header .chatbot-title {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    #chatbot .chatbot-header .chatbot-title i {
+      font-size: 1.5rem;
     }
     #chatbot .chatbot-messages {
       padding: 1rem;
@@ -276,19 +285,58 @@
       overflow-y: auto;
       color: #333;
     }
-    #chatbot .chatbot-input {
+    .chatbot-message {
+      background: #e2e8f0;
       padding: 0.75rem 1rem;
+      margin-bottom: 0.5rem;
+      border-radius: 8px;
+      animation: fadeInMessage 0.3s ease-out;
+    }
+    @keyframes fadeInMessage {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .typing-indicator {
+      display: flex;
+      align-items: center;
+      gap: 0.2rem;
+    }
+    .typing-indicator span {
+      display: block;
+      width: 6px;
+      height: 6px;
+      background: #14b8a6;
+      border-radius: 50%;
+      animation: blink 1s infinite;
+    }
+    .typing-indicator span:nth-child(2) {
+      animation-delay: 0.2s;
+    }
+    .typing-indicator span:nth-child(3) {
+      animation-delay: 0.4s;
+    }
+    @keyframes blink {
+      0%, 80%, 100% { opacity: 0; }
+      40% { opacity: 1; }
+    }
+    #chatbot .chatbot-input {
+      padding: 1rem;
       background: #fff;
       border-top: 1px solid #ddd;
     }
     #chatbot .chatbot-input input {
       width: 100%;
-      padding: 0.5rem;
+      padding: 0.75rem;
       border: 1px solid #ddd;
-      border-radius: 4px;
+      border-radius: 8px;
+      outline: none;
+      transition: border-color 0.3s;
+    }
+    #chatbot .chatbot-input input:focus {
+      border-color: #14b8a6;
     }
     
-    /* Chatbot Toggle Button Enhancements */
+    /* Chatbot Toggle Button (already defined earlier) */
     .chatbot-toggle {
       position: fixed;
       bottom: 20px;
@@ -306,25 +354,9 @@
       animation: pulse 2s infinite;
       transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
-    
     .chatbot-toggle:hover {
       transform: scale(1.1);
       box-shadow: 0 0 15px rgba(20, 184, 166, 0.7);
-    }
-    
-    @keyframes pulse {
-      0% {
-        transform: scale(1);
-        box-shadow: 0 0 0 0 rgba(20, 184, 166, 0.7);
-      }
-      70% {
-        transform: scale(1.05);
-        box-shadow: 0 0 0 10px rgba(20, 184, 166, 0);
-      }
-      100% {
-        transform: scale(1);
-        box-shadow: 0 0 0 0 rgba(20, 184, 166, 0);
-      }
     }
     
     /* Additional Mobile Optimizations */
@@ -493,20 +525,23 @@
   <!-- Back to Top Button -->
   <div id="backToTop"><i class="fas fa-arrow-up"></i></div>
 
-  <!-- Fake AI Chatbot -->
+  <!-- Improved AI Chatbot -->
   <div id="chatbot">
     <div class="chatbot-header">
-      <span>AI Chatbot</span>
+      <div class="chatbot-title">
+        <i class="fas fa-robot"></i>
+        <span>AI Chatbot</span>
+      </div>
       <button id="chatbotClose" aria-label="Close Chatbot"><i class="fas fa-times"></i></button>
     </div>
     <div id="chatbotMessages" class="chatbot-messages">
-      <p><strong>AI:</strong> Hello, I'm your virtual assistant. How can I help you?</p>
+      <div class="chatbot-message"><strong>AI:</strong> Hello, I'm your virtual assistant. How can I help you?</div>
     </div>
     <div class="chatbot-input">
       <input type="text" id="chatbotInput" placeholder="Type your message here..." aria-label="Chatbot input">
     </div>
   </div>
-  <!-- Improved AI Chatbot Toggle Button -->
+  <!-- Chatbot Toggle Button -->
   <button id="chatbotToggle" aria-label="Open Chatbot" class="chatbot-toggle">
     <i class="fas fa-robot"></i>
   </button>
@@ -573,7 +608,7 @@
       window.scrollTo({ top: 0, behavior: 'smooth' });
     });
 
-    // Fake AI Chatbot Script
+    // Improved Fake AI Chatbot Script
     const chatbotToggle = document.getElementById('chatbotToggle');
     const chatbot = document.getElementById('chatbot');
     const chatbotClose = document.getElementById('chatbotClose');
@@ -587,23 +622,35 @@
 
     chatbotClose.addEventListener('click', () => {
       chatbot.style.display = 'none';
-      chatbotToggle.style.display = 'block';
+      chatbotToggle.style.display = 'flex';
     });
 
     chatbotInput.addEventListener('keypress', (e) => {
       if (e.key === 'Enter' && chatbotInput.value.trim() !== '') {
-        const userMsg = document.createElement('p');
+        // Append user message
+        const userMsg = document.createElement('div');
+        userMsg.classList.add('chatbot-message');
         userMsg.innerHTML = '<strong>You:</strong> ' + chatbotInput.value;
         chatbotMessages.appendChild(userMsg);
         chatbotInput.value = '';
-        // Fake AI response after a short delay
+        chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+        
+        // Show typing indicator
+        const typingIndicator = document.createElement('div');
+        typingIndicator.classList.add('chatbot-message');
+        typingIndicator.innerHTML = '<div class="typing-indicator"><span></span><span></span><span></span></div>';
+        chatbotMessages.appendChild(typingIndicator);
+        chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+        
+        // After delay, remove typing indicator and add bot response
         setTimeout(() => {
-          const botMsg = document.createElement('p');
+          typingIndicator.remove();
+          const botMsg = document.createElement('div');
+          botMsg.classList.add('chatbot-message');
           botMsg.innerHTML = '<strong>AI:</strong> I am a fake AI chatbot. How can I assist you further?';
           chatbotMessages.appendChild(botMsg);
           chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
-        }, 1000);
-        chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+        }, 1500);
       }
     });
   </script>
