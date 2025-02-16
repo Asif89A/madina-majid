@@ -287,7 +287,9 @@
       border: 1px solid #ddd;
       border-radius: 4px;
     }
-    #chatbotToggle {
+    
+    /* Chatbot Toggle Button Enhancements */
+    .chatbot-toggle {
       position: fixed;
       bottom: 20px;
       right: 20px;
@@ -298,6 +300,31 @@
       border-radius: 50%;
       cursor: pointer;
       z-index: 1002;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      animation: pulse 2s infinite;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    
+    .chatbot-toggle:hover {
+      transform: scale(1.1);
+      box-shadow: 0 0 15px rgba(20, 184, 166, 0.7);
+    }
+    
+    @keyframes pulse {
+      0% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(20, 184, 166, 0.7);
+      }
+      70% {
+        transform: scale(1.05);
+        box-shadow: 0 0 0 10px rgba(20, 184, 166, 0);
+      }
+      100% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(20, 184, 166, 0);
+      }
     }
     
     /* Additional Mobile Optimizations */
@@ -479,7 +506,10 @@
       <input type="text" id="chatbotInput" placeholder="Type your message here..." aria-label="Chatbot input">
     </div>
   </div>
-  <button id="chatbotToggle" aria-label="Open Chatbot"><i class="fas fa-comments"></i></button>
+  <!-- Improved AI Chatbot Toggle Button -->
+  <button id="chatbotToggle" aria-label="Open Chatbot" class="chatbot-toggle">
+    <i class="fas fa-robot"></i>
+  </button>
 
   <!-- Scripts -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
@@ -542,10 +572,8 @@
     backToTop.addEventListener('click', () => {
       window.scrollTo({ top: 0, behavior: 'smooth' });
     });
-  </script>
-  
-  <!-- Fake AI Chatbot Script -->
-  <script>
+
+    // Fake AI Chatbot Script
     const chatbotToggle = document.getElementById('chatbotToggle');
     const chatbot = document.getElementById('chatbot');
     const chatbotClose = document.getElementById('chatbotClose');
