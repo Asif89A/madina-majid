@@ -427,6 +427,24 @@
     body.light a:hover {
       color: #facc15;
     }
+    
+    /* ------------------------------
+       Additional Animation for Creator Donation Button
+       ------------------------------ */
+    @keyframes flash {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.5; }
+    }
+    .animate-flash {
+      animation: flash 2s infinite;
+    }
+    .creator-donate-effect {
+      transition: transform 0.5s ease, box-shadow 0.5s ease;
+    }
+    .creator-donate-effect:hover {
+      transform: scale(1.15) rotate(3deg);
+      box-shadow: 0 0 25px rgba(0, 0, 255, 0.7);
+    }
   </style>
 </head>
 <body class="bg-gradient-to-br from-blue-900 via-gray-900 to-gray-800 text-gray-200">
@@ -571,8 +589,8 @@
       <p class="mt-3">If you appreciate our work and the seamless experience we strive to deliver, please consider supporting the creator:</p>
       <div class="flex justify-center mt-4">
         <a
-          href="https://www.paypal.com/donate?hosted_button_id=EXAMPLE"
-          class="ripple donate-button bg-blue-500 text-gray-900 px-6 py-3 rounded-lg text-lg hover:bg-blue-600 transition hover-animate animate-bounce"
+          href="upi://pay?pa=dr.89@ibl&pn=Madina%20Masjid&mc=0000&mode=02&purpose=00"
+          class="ripple donate-button creator-donate-effect bg-blue-500 text-gray-900 px-6 py-3 rounded-lg text-lg hover:bg-blue-600 transition animate-bounce animate-flash"
           aria-label="Donate to Website Creator"
         >
           Donate to Creator
