@@ -3,20 +3,24 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <!-- Set browser header color -->
+  <!-- Set browser header color (only a single color is supported) -->
   <meta name="theme-color" content="#14b8a6">
   <title>Madina Masjid Purandawade</title>
   <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
   <!-- AOS Animation Library -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />
-  <!-- FontAwesome for icons -->
+  <!-- FontAwesome (for icons like bars, times, sun, arrow-up) -->
   <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Source+Sans+Pro:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <!-- Google Fonts: Playfair Display for headings, Source Sans Pro for body -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Source+Sans+Pro:wght@300;400;600;700&display=swap"
+    rel="stylesheet"
+  >
   <style>
     /* Smooth Scroll */
     html { scroll-behavior: smooth; }
+    
     /* Global Typography */
     body { font-family: 'Source Sans Pro', sans-serif; }
     h1, h2, h3, .masjid-title { font-family: 'Playfair Display', serif; }
@@ -41,6 +45,7 @@
       align-items: center;
       padding: 0 1rem;
     }
+    /* Header Title with Premium Icon */
     .header-title {
       display: flex;
       align-items: center;
@@ -118,7 +123,7 @@
       100% { background-position: 0% 50%; }
     }
     
-    /* Common Animations */
+    /* Animations */
     .animate-bounce { animation: bounce 1.5s infinite; }
     @keyframes bounce {
       0%, 100% { transform: translateY(0); }
@@ -134,11 +139,26 @@
     }
     .animate-slide-in-left { animation: slideInLeft 1s ease forwards; }
     .animate-slide-in-right { animation: slideInRight 1s ease forwards; }
+    
     @keyframes fadeUp {
       0% { opacity: 0; transform: translateY(20px); }
       100% { opacity: 1; transform: translateY(0); }
     }
     .animate-fade-up { animation: fadeUp 1s ease forwards; }
+    
+    @keyframes gradientBG {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+    .header-animate {
+      background-size: 200% 200%;
+      animation: gradientBG 10s ease infinite;
+    }
+    .header-animate:hover {
+      text-shadow: 0 0 10px #fff;
+      transition: text-shadow 0.3s ease;
+    }
     
     /* Ripple Effect */
     .ripple { position: relative; overflow: hidden; }
@@ -150,6 +170,58 @@
       animation: rippleAnim 0.5s linear;
     }
     @keyframes rippleAnim { to { transform: scale(4); opacity: 0; } }
+    
+    /* Button Hover Effects */
+    .hover-animate:hover {
+      transform: scale(1.05);
+      transition: transform 0.3s ease-in-out;
+    }
+    .donate-button:hover {
+      transform: scale(1.1) rotate(2deg);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      box-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
+    }
+    .prayer-card:hover { transform: rotate(1deg); transition: transform 0.3s ease; }
+    
+    /* Premium Effect for Prayer Timings */
+    .premium-prayer {
+      position: relative;
+      border: 2px solid transparent;
+      transition: transform 0.3s ease, border 0.3s ease;
+    }
+    .premium-prayer:hover {
+      transform: rotate(1deg) scale(1.02);
+      border: 2px solid;
+      border-image: linear-gradient(45deg, #fde047, #facc15) 1;
+    }
+    
+    /* Enhanced Emoji Animations in Teachings */
+    .emoji {
+      display: inline-block;
+      animation: spinPulse 3s infinite;
+      transition: transform 0.3s ease, filter 0.3s ease;
+    }
+    @keyframes spinPulse {
+      0% { transform: scale(1) rotate(0deg); }
+      25% { transform: scale(1.05) rotate(10deg); }
+      50% { transform: scale(1) rotate(0deg); }
+      75% { transform: scale(1.05) rotate(-10deg); }
+      100% { transform: scale(1) rotate(0deg); }
+    }
+    .emoji:hover {
+      animation: shakeEmoji 0.5s;
+      filter: drop-shadow(0 0 5px #fde047) hue-rotate(45deg);
+    }
+    @keyframes shakeEmoji {
+      0% { transform: rotate(0deg); }
+      25% { transform: rotate(10deg); }
+      50% { transform: rotate(0deg); }
+      75% { transform: rotate(-10deg); }
+      100% { transform: rotate(0deg); }
+    }
+    
+    /* Masjid Title */
+    .masjid-title { font-size: 2.8rem; font-weight: 700; letter-spacing: 1px; }
     
     /* Section Spacing */
     section { padding: 4rem 1rem; }
@@ -172,129 +244,210 @@
     #backToTop:hover { background: #0d9488; }
     
     /* ------------------------------
-       Ramzan Special Update Section
+       Improved Fake AI Chatbot Styles
        ------------------------------ */
-    #ramzan-update {
-      background: linear-gradient(135deg, #0b486b, #f56217);
-      color: #fff;
-      position: relative;
+    #chatbot {
+      position: fixed;
+      bottom: 80px;
+      right: 20px;
+      width: 320px;
+      max-width: 90%;
+      background: linear-gradient(to bottom right, #ffffff, #f1f1f1);
+      border-radius: 12px;
       overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+      display: none;
+      z-index: 1002;
+      animation: slideInUp 0.5s ease-out;
+    }
+    @keyframes slideInUp {
+      from { transform: translateY(100%); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+    #chatbot .chatbot-header {
+      background: #14b8a6;
+      color: #fff;
+      padding: 1rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-weight: bold;
+    }
+    #chatbot .chatbot-header .chatbot-title {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    #chatbot .chatbot-messages {
+      padding: 1rem;
+      background: #f9f9f9;
+      height: 250px;
+      overflow-y: auto;
+      color: #333;
+    }
+    .chatbot-message {
+      background: #e2e8f0;
+      padding: 0.75rem 1rem;
+      margin-bottom: 0.5rem;
+      border-radius: 8px;
+      animation: fadeInMessage 0.3s ease-out;
+    }
+    @keyframes fadeInMessage {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .typing-indicator {
+      display: flex;
+      align-items: center;
+      gap: 0.2rem;
+    }
+    .typing-indicator span {
+      display: block;
+      width: 6px;
+      height: 6px;
+      background: #14b8a6;
+      border-radius: 50%;
+      animation: blink 1s infinite;
+    }
+    .typing-indicator span:nth-child(2) {
+      animation-delay: 0.2s;
+    }
+    .typing-indicator span:nth-child(3) {
+      animation-delay: 0.4s;
+    }
+    @keyframes blink {
+      0%, 80%, 100% { opacity: 0; }
+      40% { opacity: 1; }
+    }
+    #chatbot .chatbot-input {
+      padding: 1rem;
+      background: #fff;
+      border-top: 1px solid #ddd;
+    }
+    #chatbot .chatbot-input input {
+      width: 100%;
+      padding: 0.75rem;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      outline: none;
+      transition: border-color 0.3s;
+    }
+    #chatbot .chatbot-input input:focus {
+      border-color: #14b8a6;
+    }
+    
+    /* Chatbot Toggle Button */
+    .chatbot-toggle {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: #14b8a6;
+      color: #fff;
+      border: none;
+      padding: 0.75rem;
+      border-radius: 50%;
+      cursor: pointer;
+      z-index: 1002;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      animation: pulse 2s infinite;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .chatbot-toggle:hover {
+      transform: scale(1.1);
+      box-shadow: 0 0 15px rgba(20, 184, 166, 0.7);
+    }
+    
+    @keyframes pulse {
+      0% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(20, 184, 166, 0.7);
+      }
+      70% {
+        transform: scale(1.05);
+        box-shadow: 0 0 0 10px rgba(20, 184, 166, 0);
+      }
+      100% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(20, 184, 166, 0);
+      }
+    }
+    
+    /* Additional Mobile Optimizations */
+    @media (max-width: 640px) {
+      .header-title span { font-size: 1.25rem; }
+      .header-title i { font-size: 1.5rem; }
+      .masjid-title { font-size: 2rem; }
+      .hero h1 { font-size: 2.5rem; }
+      .hero p { font-size: 1rem; }
+      section { padding: 3rem 0.5rem; }
+      #chatbot { width: 95%; right: 2.5%; bottom: 90px; }
+      #navMenu.active { width: 100%; }
+    }
+    
+    /* ------------------------------
+       Additional Animations for
+       Islamic Teachings & Knowledge Section
+       ------------------------------ */
+    #teachings {
+      background: linear-gradient(135deg, #0f172a, #1e293b);
+      background-size: 200% 200%;
+      animation: gradientBG 15s ease infinite;
       padding: 4rem 1rem;
     }
-    #ramzan-update h2 {
-      font-size: 2.8rem;
-      margin-bottom: 1rem;
-      animation: slideInRight 1s ease forwards;
+    #teachings h2:hover {
+      text-shadow: 0 0 10px #fde047;
+      transition: text-shadow 0.3s ease;
     }
-    #ramzan-update p {
-      font-size: 1.2rem;
-      margin-bottom: 2rem;
-      animation: fadeUp 1.2s ease forwards;
-    }
-    /* Rotating Crescent Icon */
-    .ramzan-icon {
-      position: absolute;
-      top: -40px;
-      right: -40px;
-      width: 120px;
-      height: 120px;
-      background: url('https://img.icons8.com/emoji/96/000000/crescent-moon.png') no-repeat center center;
-      background-size: contain;
-      animation: rotateIcon 12s linear infinite;
-    }
-    @keyframes rotateIcon {
-      from { transform: rotate(0deg); }
-      to { transform: rotate(360deg); }
-    }
-    /* Floating Lanterns */
-    .ramzan-lantern {
-      position: absolute;
-      bottom: -80px;
-      width: 60px;
-      height: 100px;
-      background: #ffcc00;
-      border-radius: 30px;
-      box-shadow: 0 0 15px rgba(255, 204, 0, 0.8);
-      animation: floatLantern 6s ease-in-out infinite;
-    }
-    .lantern-1 { left: 10%; animation-delay: 0s; }
-    .lantern-2 { left: 70%; animation-delay: 2s; }
-    @keyframes floatLantern {
-      0% { transform: translateY(0) rotate(0deg); opacity: 0.9; }
-      50% { transform: translateY(-30px) rotate(10deg); opacity: 1; }
-      100% { transform: translateY(0) rotate(0deg); opacity: 0.9; }
-    }
-    /* Twinkling Stars in Ramzan Section */
-    .twinkle-star {
-      position: absolute;
-      color: #fff;
-      font-size: 1.5rem;
-      animation: twinkle 3s infinite;
-    }
-    .star-1 { top: 20%; left: 30%; animation-delay: 0s; }
-    .star-2 { top: 40%; left: 50%; animation-delay: 1s; }
-    .star-3 { top: 25%; left: 70%; animation-delay: 2s; }
-    @keyframes twinkle {
-      0%, 100% { opacity: 0.8; transform: scale(1); }
-      50% { opacity: 1; transform: scale(1.2); }
-    }
-    /* Call-to-Action Button Styling */
-    .ramzan-btn:hover {
-      transform: scale(1.1) rotate(2deg);
-      transition: transform 0.3s ease;
-      box-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
+    #teachings li:hover {
+      transform: scale(1.05);
+      color: #fde047;
+      text-shadow: 0 0 10px rgba(253, 224, 71, 0.8);
+      transition: transform 0.3s ease, color 0.3s ease, text-shadow 0.3s ease;
     }
     
     /* ------------------------------
-       Floating Moon & Drifting Stars (Site-wide Background Elements)
+       Dark/Light Mode Overrides
        ------------------------------ */
-    .floating-moon {
-      position: fixed;
-      top: 10%;
-      left: -100px;
-      width: 150px;
-      height: 150px;
-      background: url('https://img.icons8.com/emoji/96/000000/crescent-moon.png') no-repeat center center;
-      background-size: contain;
-      z-index: 0;
-      animation: driftMoon 30s linear infinite;
+    body.light {
+      background: #f9f9f9;
+      color: #333;
     }
-    @keyframes driftMoon {
-      0% { transform: translateX(0) translateY(0); }
-      50% { transform: translateX(110vw) translateY(20vh); }
-      100% { transform: translateX(0) translateY(0); }
+    body.light nav {
+      background: linear-gradient(to right, #facc15, #fde047);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.15);
     }
-    .drifting-star {
-      position: fixed;
-      width: 20px;
-      height: 20px;
-      background: url('https://img.icons8.com/fluency/48/000000/star.png') no-repeat center center;
-      background-size: contain;
-      z-index: 0;
-      animation: driftStar 20s linear infinite;
+    body.light .header-title span {
+      color: #333;
     }
-    .star-drift-1 { top: 20%; left: 10%; animation-delay: 0s; }
-    .star-drift-2 { top: 50%; left: 80%; animation-delay: 5s; }
-    .star-drift-3 { top: 70%; left: 40%; animation-delay: 10s; }
-    @keyframes driftStar {
-      0% { transform: translateX(0) translateY(0); opacity: 0.8; }
-      50% { transform: translateX(50vw) translateY(30vh); opacity: 1; }
-      100% { transform: translateX(0) translateY(0); opacity: 0.8; }
+    body.light a {
+      color: #333;
+    }
+    body.light a:hover {
+      color: #facc15;
     }
     
     /* ------------------------------
-       Other Existing Styles (unchanged)
+       Additional Animation for Creator Donation Button
        ------------------------------ */
-    /* Additional styles for other sections can be added below */
+    @keyframes flash {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.5; }
+    }
+    .animate-flash {
+      animation: flash 2s infinite;
+    }
+    .creator-donate-effect {
+      transition: transform 0.5s ease, box-shadow 0.5s ease;
+    }
+    .creator-donate-effect:hover {
+      transform: scale(1.15) rotate(3deg);
+      box-shadow: 0 0 25px rgba(0, 0, 255, 0.7);
+    }
   </style>
 </head>
 <body class="bg-gradient-to-br from-blue-900 via-gray-900 to-gray-800 text-gray-200">
-  <!-- Floating Moon & Drifting Stars -->
-  <div class="floating-moon"></div>
-  <div class="drifting-star star-drift-1"></div>
-  <div class="drifting-star star-drift-2"></div>
-  <div class="drifting-star star-drift-3"></div>
-  
   <!-- Fixed Navigation Bar -->
   <header>
     <nav>
@@ -333,39 +486,129 @@
           Welcome to Madina Masjid Purandawade
         </h1>
         <p class="mt-4 text-xl">A place of peace, prayer, and unity.</p>
-        <a href="#donate" class="ripple mt-6 inline-block bg-yellow-400 text-gray-900 px-6 py-3 rounded-lg text-lg hover:bg-yellow-500 transition animate-bounce" data-aos="fade-up" aria-label="Support Us">
+        <a
+          href="#donate"
+          class="ripple mt-6 inline-block bg-yellow-400 text-gray-900 px-6 py-3 rounded-lg text-lg hover:bg-yellow-500 transition hover-animate animate-bounce"
+          data-aos="fade-up"
+          aria-label="Support Us"
+        >
           Support Us
         </a>
       </div>
     </section>
 
-    <!-- Other existing sections (Teachings, Prayer Timings, Quotes, Donate, etc.) can be added here -->
-    
-    <!-- Ramzan Update Section -->
-    <section id="ramzan-update" class="text-center" data-aos="zoom-in">
-      <!-- Rotating Crescent Icon -->
-      <div class="ramzan-icon"></div>
-      <!-- Floating Lanterns -->
-      <div class="ramzan-lantern lantern-1"></div>
-      <div class="ramzan-lantern lantern-2"></div>
-      <!-- Twinkling Stars in Section -->
-      <div class="twinkle-star star-1"><i class="fas fa-star"></i></div>
-      <div class="twinkle-star star-2"><i class="fas fa-star"></i></div>
-      <div class="twinkle-star star-3"><i class="fas fa-star"></i></div>
-      <h2 class="animate-slide-in-left">Ramzan Kareem</h2>
-      <p class="animate-fade-up">
-        Embrace the spirit of Ramzan with heartfelt prayers, reflection, and unity. May this blessed month illuminate your life with peace and prosperity.
+    <!-- Islamic Teachings & Knowledge -->
+    <section id="teachings" class="text-center" data-aos="fade-up">
+      <h2 class="text-3xl font-semibold text-teal-400 animate-slide-in-left">
+        Islamic Teachings &amp; Knowledge
+      </h2>
+      <p class="mt-3 italic text-lg animate-slide-in-right">
+        “Indeed, prayer prohibits immorality and wrongdoing, and the remembrance of Allah is greater.” - (Quran 29:45)
       </p>
-      <a href="#donate" class="ripple ramzan-btn inline-block bg-yellow-400 text-gray-900 px-6 py-3 rounded-lg text-lg hover:bg-yellow-500 transition animate-bounce" aria-label="Join the Ramzan Celebration">
-        Celebrate with Us
-      </a>
+      <p class="mt-3">
+        Learn about the teachings of Islam, the importance of Salah, and the significance of community and charity.
+      </p>
+      <ul class="mt-5 space-y-3 text-lg">
+        <li class="animate-fade-up" style="animation-delay: 100ms;">
+          <span class="emoji">📖</span>
+          <strong>The Five Pillars of Islam:</strong> Shahada, Salah, Zakat, Sawm, and Hajj.
+        </li>
+        <li class="animate-fade-up" style="animation-delay: 200ms;">
+          <span class="emoji">🕌</span>
+          <strong>The Importance of Salah:</strong> Daily prayers keep the heart connected to Allah.
+        </li>
+        <li class="animate-fade-up" style="animation-delay: 300ms;">
+          <span class="emoji">❤️</span>
+          <strong>Charity (Sadaqah &amp; Zakat):</strong> Helping those in need is a core Islamic value.
+        </li>
+        <li class="animate-fade-up" style="animation-delay: 400ms;">
+          <span class="emoji">📜</span>
+          <strong>Hadith Wisdom:</strong> "The best among you are those who have the best manners and character."
+        </li>
+        <li class="animate-fade-up" style="animation-delay: 500ms;">
+          <span class="emoji">🕋</span>
+          <strong>The Quran:</strong> The final revelation and guidance for mankind.
+        </li>
+        <li class="animate-fade-up" style="animation-delay: 600ms;">
+          <span class="emoji">🌙</span>
+          <strong>Fasting (Sawm):</strong> A means to attain self-discipline and closeness to Allah.
+        </li>
+      </ul>
+    </section>
+
+    <!-- Prayer Timings -->
+    <section id="prayer-timings" class="text-center" data-aos="fade-up">
+      <h2 class="text-3xl font-semibold text-teal-400 animate-slide-in-left">
+        Prayer Timings
+      </h2>
+      <!-- The live prayer timings will be injected here -->
+      <div class="grid grid-cols-2 md:grid-cols-5 gap-4 mt-4" id="timing-cards"></div>
+    </section>
+
+    <!-- Islamic Quotes -->
+    <section class="text-center bg-gray-800" data-aos="fade-up">
+      <h2 class="text-3xl font-semibold text-teal-400 animate-slide-in-right">
+        Islamic Quotes
+      </h2>
+      <p id="islamic-quote" class="mt-3 text-lg italic animate-fade-in">
+        “And He found you lost and guided [you].” - (Quran 93:7)
+      </p>
+    </section>
+
+    <!-- Donate Section -->
+    <section
+      id="donate"
+      class="text-center bg-gray-900 shadow-lg"
+      data-aos="flip-up"
+      data-aos-delay="300"
+    >
+      <h2 class="text-3xl font-semibold text-yellow-400 animate-slide-in-right">
+        Donate to the Masjid
+      </h2>
+      <p class="mt-3">Support us via UPI:</p>
+      <div class="flex justify-center mt-4">
+        <a
+          href="upi://pay?pa=dr.89@ibl&pn=Madina%20Masjid&mc=0000&mode=02&purpose=00"
+          class="ripple donate-button bg-green-500 text-gray-900 px-6 py-3 rounded-lg text-lg hover:bg-green-600 transition hover-animate animate-bounce"
+          aria-label="Donate via UPI"
+        >
+          Donate via UPI
+        </a>
+      </div>
+    </section>
+    
+    <!-- Support the Website Creator Section -->
+    <section
+      id="donate-creator"
+      class="text-center bg-gray-800 shadow-lg"
+      data-aos="flip-up"
+      data-aos-delay="300"
+    >
+      <h2 class="text-3xl font-semibold text-purple-400 animate-slide-in-right">
+        Support the Website Creator
+      </h2>
+      <p class="mt-3">If you appreciate our work and the seamless experience we strive to deliver, please consider supporting the creator:</p>
+      <div class="flex justify-center mt-4">
+        <a
+          href="upi://pay?pa=dr.89@ibl&pn=Madina%20Masjid&mc=0000&mode=02&purpose=00"
+          class="ripple donate-button creator-donate-effect bg-blue-500 text-gray-900 px-6 py-3 rounded-lg text-lg hover:bg-blue-600 transition animate-bounce animate-flash"
+          aria-label="Donate to Website Creator"
+        >
+          Donate to Creator
+        </a>
+      </div>
     </section>
   </main>
 
   <!-- Footer -->
-  <footer class="text-center p-5 bg-gradient-to-r from-teal-600 to-green-700 text-white mt-5 shadow-lg animate-fade-in" role="contentinfo">
+  <footer
+    class="text-center p-5 bg-gradient-to-r from-teal-600 to-green-700 text-white mt-5 shadow-lg animate-fade-in"
+    role="contentinfo"
+  >
     &copy; 2025 Madina Masjid Purandawade |
-    <a href="https://github.com/yourgithubrepo" target="_blank" class="underline">View on GitHub</a>
+    <a href="https://github.com/yourgithubrepo" target="_blank" class="underline">
+      View on GitHub
+    </a>
   </footer>
 
   <!-- Back to Top Button -->
@@ -375,7 +618,11 @@
   <div id="chatbot">
     <div class="chatbot-header">
       <div class="chatbot-title">
-        <img src="https://img.icons8.com/fluency-systems-filled/48/ffffff/robot.png" alt="Robot Icon" style="width:24px; height:24px;">
+        <img
+          src="https://img.icons8.com/fluency-systems-filled/48/ffffff/robot.png"
+          alt="Robot Icon"
+          style="width:24px; height:24px;"
+        >
         <span>AI Chatbot</span>
       </div>
       <button id="chatbotClose" aria-label="Close Chatbot">
@@ -388,13 +635,22 @@
       </div>
     </div>
     <div class="chatbot-input">
-      <input type="text" id="chatbotInput" placeholder="Type your message here..." aria-label="Chatbot input">
+      <input
+        type="text"
+        id="chatbotInput"
+        placeholder="Type your message here..."
+        aria-label="Chatbot input"
+      >
     </div>
   </div>
 
   <!-- Chatbot Toggle Button -->
   <button id="chatbotToggle" aria-label="Open Chatbot" class="chatbot-toggle">
-    <img src="https://img.icons8.com/fluency-systems-filled/48/ffffff/robot.png" alt="Robot Icon" style="width:24px; height:24px;">
+    <img
+      src="https://img.icons8.com/fluency-systems-filled/48/ffffff/robot.png"
+      alt="Robot Icon"
+      style="width:24px; height:24px;"
+    >
   </button>
 
   <!-- Scripts -->
@@ -410,7 +666,7 @@
       navMenu.classList.toggle('active');
     });
 
-    // Ripple Effect
+    // Ripple Effect for elements with class 'ripple'
     document.querySelectorAll('.ripple').forEach(element => {
       element.addEventListener('click', function(e) {
         const circle = document.createElement('span');
@@ -441,7 +697,7 @@
         : '<i class="fas fa-sun"></i>';
     });
 
-    // Back to Top Button
+    // Back to Top Button Functionality
     const backToTop = document.getElementById('backToTop');
     window.addEventListener('scroll', () => {
       backToTop.style.display = window.pageYOffset > 300 ? 'block' : 'none';
@@ -450,7 +706,7 @@
       window.scrollTo({ top: 0, behavior: 'smooth' });
     });
 
-    // AI Chatbot
+    // Improved Fake AI Chatbot Script
     const chatbotToggle = document.getElementById('chatbotToggle');
     const chatbot = document.getElementById('chatbot');
     const chatbotClose = document.getElementById('chatbotClose');
@@ -493,7 +749,9 @@
       }
     });
 
+    // ------------------------------
     // Live Prayer Timings Integration
+    // ------------------------------
     async function updatePrayerTimings() {
       // Coordinates for Purandawade, Solapur, Maharashtra, India
       const lat = 17.68, long = 75.90;
