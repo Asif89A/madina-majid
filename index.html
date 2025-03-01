@@ -93,6 +93,7 @@
       align-items: center;
       position: relative;
       animation: fadeIn 2s ease-in-out;
+      z-index: 1;
     }
     .overlay {
       background: rgba(0,0,0,0.6);
@@ -331,7 +332,7 @@
       </div>
     </section>
 
-    <!-- Existing Content Sections -->
+    <!-- Islamic Teachings Section -->
     <section id="teachings" class="text-center" data-aos="fade-up">
       <h2 class="text-3xl font-semibold text-teal-400 animate-slide-in-left">
         Islamic Teachings &amp; Knowledge
@@ -370,6 +371,7 @@
       </ul>
     </section>
 
+    <!-- Prayer Timings Section -->
     <section id="prayer-timings" class="text-center" data-aos="fade-up">
       <h2 class="text-3xl font-semibold text-teal-400 animate-slide-in-left">
         Prayer Timings
@@ -377,6 +379,7 @@
       <div class="grid grid-cols-2 md:grid-cols-5 gap-4 mt-4" id="timing-cards"></div>
     </section>
 
+    <!-- Islamic Quotes Section -->
     <section class="text-center bg-gray-800" data-aos="fade-up">
       <h2 class="text-3xl font-semibold text-teal-400 animate-slide-in-right">
         Islamic Quotes
@@ -386,6 +389,7 @@
       </p>
     </section>
 
+    <!-- Donate Section -->
     <section id="donate" class="text-center bg-gray-900 shadow-lg" data-aos="flip-up" data-aos-delay="300">
       <h2 class="text-3xl font-semibold text-yellow-400 animate-slide-in-right">
         Donate to the Masjid
@@ -398,6 +402,7 @@
       </div>
     </section>
     
+    <!-- Donate Creator Section -->
     <section id="donate-creator" class="text-center bg-gray-800 shadow-lg" data-aos="flip-up" data-aos-delay="300">
       <h2 class="text-3xl font-semibold text-purple-400 animate-slide-in-right">
         Support the Website Creator
@@ -566,7 +571,6 @@
       const lat = 17.68, long = 75.90;
       const timestamp = Math.floor(Date.now() / 1000);
       const url = `https://api.aladhan.com/v1/timings/${timestamp}?latitude=${lat}&longitude=${long}&method=2`;
-
       try {
         const response = await fetch(url);
         const data = await response.json();
