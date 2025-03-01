@@ -3,16 +3,16 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <!-- Set browser header color (only a single color is supported) -->
+  <!-- Set browser header color -->
   <meta name="theme-color" content="#14b8a6">
   <title>Madina Masjid Purandawade</title>
   <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
   <!-- AOS Animation Library -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />
-  <!-- FontAwesome (for icons like bars, times, sun, arrow-up) -->
+  <!-- FontAwesome for icons -->
   <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
-  <!-- Google Fonts: Playfair Display for headings, Source Sans Pro for body -->
+  <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Source+Sans+Pro:wght@300;400;600;700&display=swap" rel="stylesheet">
   <style>
     /* Smooth Scroll */
@@ -248,19 +248,20 @@
        ------------------------------ */
     .floating-moon {
       position: fixed;
-      top: 10%;
-      left: -100px;
-      width: 150px;
-      height: 150px;
+      top: 8%;
+      left: -120px;
+      width: 140px;
+      height: 140px;
       background: url('https://img.icons8.com/emoji/96/000000/crescent-moon.png') no-repeat center center;
       background-size: contain;
       z-index: 0;
-      animation: driftMoon 30s linear infinite;
+      /* Refined animation for subtle drifting */
+      animation: driftMoon 35s ease-in-out infinite;
     }
     @keyframes driftMoon {
-      0% { transform: translateX(0) translateY(0); }
-      50% { transform: translateX(110vw) translateY(20vh); }
-      100% { transform: translateX(0) translateY(0); }
+      0% { transform: translate(0, 0); }
+      50% { transform: translate(100vw, 10vh); }
+      100% { transform: translate(0, 0); }
     }
     .drifting-star {
       position: fixed;
@@ -269,15 +270,113 @@
       background: url('https://img.icons8.com/fluency/48/000000/star.png') no-repeat center center;
       background-size: contain;
       z-index: 0;
-      animation: driftStar 20s linear infinite;
+      animation: driftStar 25s ease-in-out infinite;
     }
-    .star-drift-1 { top: 20%; left: 10%; animation-delay: 0s; }
-    .star-drift-2 { top: 50%; left: 80%; animation-delay: 5s; }
-    .star-drift-3 { top: 70%; left: 40%; animation-delay: 10s; }
+    .star-drift-1 { top: 20%; left: 5%; animation-delay: 0s; }
+    .star-drift-2 { top: 55%; left: 85%; animation-delay: 5s; }
+    .star-drift-3 { top: 75%; left: 45%; animation-delay: 10s; }
     @keyframes driftStar {
-      0% { transform: translateX(0) translateY(0); opacity: 0.8; }
-      50% { transform: translateX(50vw) translateY(30vh); opacity: 1; }
-      100% { transform: translateX(0) translateY(0); opacity: 0.8; }
+      0% { transform: translate(0, 0); opacity: 0.8; }
+      50% { transform: translate(40vw, 20vh); opacity: 1; }
+      100% { transform: translate(0, 0); opacity: 0.8; }
+    }
+    
+    /* ------------------------------
+       Upgraded AI Chatbot Section
+       ------------------------------ */
+    #chatbot {
+      position: fixed;
+      bottom: 80px;
+      right: 20px;
+      width: 320px;
+      max-width: 95%;
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      display: none;
+      flex-direction: column;
+      overflow: hidden;
+      z-index: 1100;
+      animation: slideInUp 0.5s ease-out;
+    }
+    @keyframes slideInUp {
+      from { transform: translateY(100%); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+    #chatbot .chatbot-header {
+      background: #14b8a6;
+      color: #fff;
+      padding: 1rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-weight: bold;
+    }
+    #chatbot .chatbot-header .chatbot-title {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    #chatbot .chatbot-messages {
+      padding: 1rem;
+      background: #f9f9f9;
+      height: 250px;
+      overflow-y: auto;
+      color: #333;
+      font-size: 0.9rem;
+    }
+    #chatbot .chatbot-message {
+      background: #e2e8f0;
+      padding: 0.75rem 1rem;
+      margin-bottom: 0.5rem;
+      border-radius: 8px;
+      animation: fadeInMessage 0.3s ease-out;
+    }
+    @keyframes fadeInMessage {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    #chatbot .chatbot-input {
+      padding: 1rem;
+      background: #fff;
+      border-top: 1px solid #ddd;
+    }
+    #chatbot .chatbot-input input {
+      width: 100%;
+      padding: 0.75rem;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      outline: none;
+      transition: border-color 0.3s;
+    }
+    #chatbot .chatbot-input input:focus {
+      border-color: #14b8a6;
+    }
+    .chatbot-toggle {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: #14b8a6;
+      color: #fff;
+      border: none;
+      padding: 0.75rem;
+      border-radius: 50%;
+      cursor: pointer;
+      z-index: 1100;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      animation: pulse 2s infinite;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .chatbot-toggle:hover {
+      transform: scale(1.1);
+      box-shadow: 0 0 15px rgba(20,184,166,0.7);
+    }
+    @keyframes pulse {
+      0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(20,184,166,0.7); }
+      70% { transform: scale(1.05); box-shadow: 0 0 0 10px rgba(20,184,166,0); }
+      100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(20,184,166,0); }
     }
   </style>
 </head>
@@ -445,30 +544,30 @@
   <!-- Back to Top Button -->
   <div id="backToTop"><i class="fas fa-arrow-up"></i></div>
 
-  <!-- AI Chatbot -->
+  <!-- Upgraded AI Chatbot Section -->
   <div id="chatbot">
     <div class="chatbot-header">
-      <div class="chatbot-title">
-        <img src="https://img.icons8.com/fluency-systems-filled/48/ffffff/robot.png" alt="Robot Icon" style="width:24px; height:24px;">
-        <span>AI Chatbot</span>
+      <div class="chatbot-title flex items-center gap-2">
+        <img src="https://img.icons8.com/fluency-systems-filled/48/ffffff/robot.png" alt="Robot Icon" class="w-6 h-6">
+        <span>Chat with Us</span>
       </div>
-      <button id="chatbotClose" aria-label="Close Chatbot">
+      <button id="chatbotClose" aria-label="Close Chatbot" class="focus:outline-none">
         <i class="fas fa-times"></i>
       </button>
     </div>
-    <div id="chatbotMessages" class="chatbot-messages">
-      <div class="chatbot-message">
-        <strong>AI:</strong> Hello, I'm your virtual assistant. How can I help you?
+    <div id="chatbotMessages" class="chatbot-messages p-4 bg-gray-100 h-60 overflow-y-auto text-sm text-gray-800">
+      <div class="chatbot-message mb-2">
+        <strong>AI:</strong> Hello, I'm your virtual assistant. How can I help you today?
       </div>
     </div>
-    <div class="chatbot-input">
-      <input type="text" id="chatbotInput" placeholder="Type your message here..." aria-label="Chatbot input">
+    <div class="chatbot-input p-4 bg-white border-t border-gray-200">
+      <input type="text" id="chatbotInput" placeholder="Type your message here..." aria-label="Chatbot input" class="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:border-teal-600">
     </div>
   </div>
 
   <!-- Chatbot Toggle Button -->
-  <button id="chatbotToggle" aria-label="Open Chatbot" class="chatbot-toggle">
-    <img src="https://img.icons8.com/fluency-systems-filled/48/ffffff/robot.png" alt="Robot Icon" style="width:24px; height:24px;">
+  <button id="chatbotToggle" aria-label="Open Chatbot" class="chatbot-toggle fixed bottom-5 right-5 bg-teal-600 text-white p-3 rounded-full shadow-lg flex items-center justify-center animate-pulse focus:outline-none">
+    <img src="https://img.icons8.com/fluency-systems-filled/48/ffffff/robot.png" alt="Robot Icon" class="w-6 h-6">
   </button>
 
   <!-- Scripts -->
@@ -524,7 +623,7 @@
       window.scrollTo({ top: 0, behavior: 'smooth' });
     });
 
-    // AI Chatbot
+    // Upgraded AI Chatbot Functionality
     const chatbotToggle = document.getElementById('chatbotToggle');
     const chatbot = document.getElementById('chatbot');
     const chatbotClose = document.getElementById('chatbotClose');
@@ -532,7 +631,7 @@
     const chatbotMessages = document.getElementById('chatbotMessages');
 
     chatbotToggle.addEventListener('click', () => {
-      chatbot.style.display = 'block';
+      chatbot.style.display = 'flex';
       chatbotToggle.style.display = 'none';
     });
     chatbotClose.addEventListener('click', () => {
@@ -542,22 +641,22 @@
     chatbotInput.addEventListener('keypress', (e) => {
       if (e.key === 'Enter' && chatbotInput.value.trim() !== '') {
         const userMsg = document.createElement('div');
-        userMsg.classList.add('chatbot-message');
+        userMsg.classList.add('chatbot-message', 'mb-2');
         userMsg.innerHTML = '<strong>You:</strong> ' + chatbotInput.value;
         chatbotMessages.appendChild(userMsg);
         chatbotInput.value = '';
         chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
         
         const typingIndicator = document.createElement('div');
-        typingIndicator.classList.add('chatbot-message');
-        typingIndicator.innerHTML = '<div class="typing-indicator"><span></span><span></span><span></span></div>';
+        typingIndicator.classList.add('chatbot-message', 'mb-2');
+        typingIndicator.innerHTML = '<div class="typing-indicator flex gap-1"><span class="w-2 h-2 bg-teal-600 rounded-full animate-ping"></span><span class="w-2 h-2 bg-teal-600 rounded-full animate-ping"></span><span class="w-2 h-2 bg-teal-600 rounded-full animate-ping"></span></div>';
         chatbotMessages.appendChild(typingIndicator);
         chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
         
         setTimeout(() => {
           typingIndicator.remove();
           const botMsg = document.createElement('div');
-          botMsg.classList.add('chatbot-message');
+          botMsg.classList.add('chatbot-message', 'mb-2');
           botMsg.innerHTML = '<strong>AI:</strong> I am a fake AI chatbot. How can I assist you further?';
           chatbotMessages.appendChild(botMsg);
           chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
